@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FarmingManagement_FMS
 {
-    public partial class Form1 : FormBase
+    public partial class Login : FormBase
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }

@@ -61,16 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountManager.cs">
+    <Compile Include="Forms\AccountManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccountManager.Designer.cs">
+    <Compile Include="Forms\AccountManager.Designer.cs">
       <DependentUpon>AccountManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminPanel.cs">
+    <Compile Include="Forms\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminPanel.Designer.cs">
+    <Compile Include="Forms\AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Animal.cs">
@@ -127,16 +127,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FMS_Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBase.cs">
+    <Compile Include="Forms\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBase.Designer.cs">
+    <Compile Include="Forms\FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Land.cs">
@@ -145,10 +145,10 @@
     <Compile Include="Notice.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="PersonnelPanel.cs">
+    <Compile Include="Forms\PersonnelPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonnelPanel.Designer.cs">
+    <Compile Include="Forms\PersonnelPanel.Designer.cs">
       <DependentUpon>PersonnelPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -168,14 +168,14 @@
     <Compile Include="Vet.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AccountManager.resx">
+    <EmbeddedResource Include="Forms\AccountManager.resx">
       <DependentUpon>AccountManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminPanel.resx">
+    <EmbeddedResource Include="Forms\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

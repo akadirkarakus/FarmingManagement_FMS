@@ -20,7 +20,7 @@ namespace FarmingManagement_FMS
         private void button5_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Retry; 
-            //this.Close(); 
+            this.Close(); 
         }
 
         private void button4_Click(object sender, EventArgs e)

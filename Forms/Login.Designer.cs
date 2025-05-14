@@ -1,6 +1,6 @@
 ﻿namespace FarmingManagement_FMS
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.

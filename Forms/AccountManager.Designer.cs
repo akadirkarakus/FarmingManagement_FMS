@@ -32,25 +32,25 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFname = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtBdate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtFname = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtNewPass = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNewPass = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtCurPass = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -102,36 +102,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(447, 364);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label3.Location = new System.Drawing.Point(76, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(307, 44);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Display Your Information";
-            // 
-            // txtFname
-            // 
-            this.txtFname.Enabled = false;
-            this.txtFname.Location = new System.Drawing.Point(137, 176);
-            this.txtFname.Name = "txtFname";
-            this.txtFname.Size = new System.Drawing.Size(272, 45);
-            this.txtFname.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(44, 179);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 40);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Name:";
             // 
             // txtBdate
             // 
@@ -151,6 +121,35 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Birth Date:";
             // 
+            // txtFname
+            // 
+            this.txtFname.Enabled = false;
+            this.txtFname.Location = new System.Drawing.Point(137, 176);
+            this.txtFname.Name = "txtFname";
+            this.txtFname.Size = new System.Drawing.Size(272, 45);
+            this.txtFname.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label4.Location = new System.Drawing.Point(44, 179);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 40);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Name:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label3.Location = new System.Drawing.Point(76, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(307, 44);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Display Your Information";
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -165,6 +164,58 @@
             this.panel2.Size = new System.Drawing.Size(535, 364);
             this.panel2.TabIndex = 4;
             // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txtNewPass);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Location = new System.Drawing.Point(15, 198);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(499, 151);
+            this.panel3.TabIndex = 19;
+            // 
+            // txtNewPass
+            // 
+            this.txtNewPass.Location = new System.Drawing.Point(213, 73);
+            this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.ReadOnly = true;
+            this.txtNewPass.Size = new System.Drawing.Size(272, 45);
+            this.txtNewPass.TabIndex = 21;
+//            this.txtNewPass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNewPass_MouseClick);
+            this.txtNewPass.Enter += new System.EventHandler(this.txtNewPass_Enter);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label13.Location = new System.Drawing.Point(40, 73);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(165, 40);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "New Password:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label12.Location = new System.Drawing.Point(3, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(205, 39);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Change Password";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(228, 137);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
+            this.txtPhone.Size = new System.Drawing.Size(272, 45);
+            this.txtPhone.TabIndex = 18;
+    //        this.txtPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPhone_MouseClick);
+            this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -175,13 +226,6 @@
             this.label9.Size = new System.Drawing.Size(309, 44);
             this.label9.TabIndex = 15;
             this.label9.Text = "Change Your Information";
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(228, 137);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(272, 45);
-            this.txtPhone.TabIndex = 18;
             // 
             // label10
             // 
@@ -197,8 +241,10 @@
             // 
             this.txtMail.Location = new System.Drawing.Point(228, 86);
             this.txtMail.Name = "txtMail";
+            this.txtMail.ReadOnly = true;
             this.txtMail.Size = new System.Drawing.Size(272, 45);
             this.txtMail.TabIndex = 16;
+            this.txtMail.Enter += new System.EventHandler(this.txtMail_Enter);
             // 
             // label11
             // 
@@ -209,45 +255,6 @@
             this.label11.Size = new System.Drawing.Size(80, 40);
             this.label11.TabIndex = 15;
             this.label11.Text = "E-Mail:";
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtNewPass);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Location = new System.Drawing.Point(15, 198);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(499, 151);
-            this.panel3.TabIndex = 19;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label12.Location = new System.Drawing.Point(3, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(205, 39);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Change Password";
-            // 
-            // txtNewPass
-            // 
-            this.txtNewPass.Location = new System.Drawing.Point(213, 73);
-            this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.Size = new System.Drawing.Size(272, 45);
-            this.txtNewPass.TabIndex = 21;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label13.Location = new System.Drawing.Point(40, 73);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(165, 40);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "New Password:";
             // 
             // panel4
             // 
@@ -260,16 +267,12 @@
             this.panel4.Size = new System.Drawing.Size(650, 188);
             this.panel4.TabIndex = 5;
             // 
-            // label14
+            // txtCurPass
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label14.Location = new System.Drawing.Point(250, 9);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(113, 44);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "Confirm";
+            this.txtCurPass.Location = new System.Drawing.Point(275, 83);
+            this.txtCurPass.Name = "txtCurPass";
+            this.txtCurPass.Size = new System.Drawing.Size(272, 45);
+            this.txtCurPass.TabIndex = 22;
             // 
             // label15
             // 
@@ -281,12 +284,16 @@
             this.label15.TabIndex = 22;
             this.label15.Text = "Current Password:";
             // 
-            // txtCurPass
+            // label14
             // 
-            this.txtCurPass.Location = new System.Drawing.Point(275, 83);
-            this.txtCurPass.Name = "txtCurPass";
-            this.txtCurPass.Size = new System.Drawing.Size(272, 45);
-            this.txtCurPass.TabIndex = 22;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label14.Location = new System.Drawing.Point(250, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 44);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Confirm";
             // 
             // btnUpdate
             // 
@@ -299,6 +306,7 @@
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Update Changed Information";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnChangePassword
             // 
@@ -311,6 +319,7 @@
             this.btnChangePassword.TabIndex = 7;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // AccountManager
             // 
