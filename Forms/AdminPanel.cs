@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FarmingManagement_FMS.Forms;
 
 namespace FarmingManagement_FMS
 {
@@ -27,6 +28,12 @@ namespace FarmingManagement_FMS
         {
             AccountManager a = new AccountManager();
             a.ShowDialog();
+        }
+
+        private void btnMngEmp_Click(object sender, EventArgs e)
+        {
+            ManageEmployee m = new ManageEmployee();
+            m.ShowDialog();
         }
     }
 }

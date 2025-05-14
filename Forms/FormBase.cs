@@ -41,5 +41,10 @@ namespace FarmingManagement_FMS
                 return Convert.ToBase64String(hash);
             }
         }
+
+        private void FormBase_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

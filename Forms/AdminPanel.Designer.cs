@@ -59,6 +59,7 @@
             this.btnMngEmp.TabIndex = 1;
             this.btnMngEmp.Text = "Manage Employees";
             this.btnMngEmp.UseVisualStyleBackColor = true;
+            this.btnMngEmp.Click += new System.EventHandler(this.btnMngEmp_Click);
             // 
             // button1
             // 
