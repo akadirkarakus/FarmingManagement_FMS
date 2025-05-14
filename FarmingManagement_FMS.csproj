@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9F174C3-EDF2-4043-BCEE-4BC9D207A25E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FarmingManagement_FMS</RootNamespace>
+    <AssemblyName>FarmingManagement_FMS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManager.Designer.cs">
+      <DependentUpon>AccountManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPanel.Designer.cs">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Animal.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Barn.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Barn_product.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_Workspace.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment_Storage.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment_Use.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Examination.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Farm.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Farm_Work.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Field.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Field_works.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMS_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMS_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMS_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMS_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMS_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Land.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notice.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonnelPanel.Designer.cs">
+      <DependentUpon>PersonnelPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seed.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Seed_Treatment.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Storage_location.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Storing_products.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vet.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccountManager.resx">
+      <DependentUpon>AccountManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPanel.resx">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.manifest" />
+    <EntityDeploy Include="FMS_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FMS_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FMS_Model.edmx.diagram">
+      <DependentUpon>FMS_Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FMS_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FMS_Model.edmx</DependentUpon>
+      <LastGenOutput>FMS_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FMS_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FMS_Model.edmx</DependentUpon>
+      <LastGenOutput>FMS_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\..\diğer\Dosyalar\VisualStudio\FarmingManagementSystem\FarmingManagementSystem\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

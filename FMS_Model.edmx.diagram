@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6ccfd4738374f1da0843341b646ef30" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Animal" Width="1.5" PointX="8.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Barn" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Barn_product" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Employee" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Employee_Workspace" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Equipment" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Equipment_Storage" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Equipment_Use" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Examination" Width="1.5" PointX="13.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Farm" Width="1.5" PointX="3.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Farm_Work" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Field" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Field_works" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Land" Width="1.5" PointX="1.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Notice" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Seed" Width="1.5" PointX="3.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Seed_Treatment" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Storage_location" Width="1.5" PointX="3.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Storing_products" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Vet" Width="1.5" PointX="11" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Examinati__Anima__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Vet__Animal_id__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Barn__Land_no__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Barn_prod__Barn___47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Storing_p__Barn___00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Equipment__Emp_i__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Notice__Supervis__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Storing_p__Emp_i__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Equipment__Equi___17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Equipment__Equi___797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Examinati__Vet_i__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Farm__Land_no__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Farm_Work__Farm___09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Storing_p__Farm___7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field__Land_no__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field_wor__Field__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Storing_p__Field__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Seed_Trea__Seed___534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.Farm_work_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.Farm_work_location" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.Field_work_employees" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.Field_work_seeds" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmingManagementSystemModel.Management" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
