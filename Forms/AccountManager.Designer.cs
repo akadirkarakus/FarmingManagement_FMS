@@ -182,7 +182,6 @@
             this.txtNewPass.ReadOnly = true;
             this.txtNewPass.Size = new System.Drawing.Size(272, 45);
             this.txtNewPass.TabIndex = 21;
-//            this.txtNewPass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNewPass_MouseClick);
             this.txtNewPass.Enter += new System.EventHandler(this.txtNewPass_Enter);
             // 
             // label13
@@ -213,7 +212,6 @@
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(272, 45);
             this.txtPhone.TabIndex = 18;
-    //        this.txtPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPhone_MouseClick);
             this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
             // 
             // label9
@@ -336,7 +334,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "AccountManager";
-            this.Text = "AccountManager";
+            this.Text = "v";
             this.Load += new System.EventHandler(this.AccountManager_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

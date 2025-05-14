@@ -39,7 +39,6 @@ namespace FarmingManagement_FMS
                     txtMail.Text = employee.eMail;
                     txtPhone.Text = employee.phoneNumber;
                 }
-
             }
         }
 
