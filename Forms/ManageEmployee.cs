@@ -47,23 +47,29 @@ namespace FarmingManagement_FMS.Forms
             {
                 if(empStatus)
                 {
-                    var joinData = (from emp in db.Employees
-                                    join space in db.Employee_Workspace
-                                    on emp.Emp_id equals space.Emp_id
+                var joinData = (from emp in db.Employees
+                                 join space in db.Employee_Workspace
+                                 on emp.Emp_id equals space.Emp_id
                                     where emp.Status == true
-                                    select new
-                                    {
-                                        emp.Emp_id,
-                                        emp.Emp_name,
-                                        emp.Birth_date,
-                                        emp.phoneNumber,
-                                        emp.eMail,
+                                 select new
+                                 {
+                                     emp.Emp_id,
+                                     emp.Emp_name,
+                                     emp.Birth_date,
+                                     emp.phoneNumber,
+                                     emp.eMail,
                                         emp.Status,
-                                        space.Workspace_1,
-                                        space.Workspace_2
-                                    }).ToList();
-                    dataGridView1.DataSource = joinData;
-                }
+                                     space.Workspace_1,
+                                     space.Workspace_2
+                                 }).ToList();
+                dataGridView1.DataSource = joinData;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
+                
+
+                
+            }
                 else
                 {
                     var joinData = (from emp in db.Employees
@@ -82,14 +88,19 @@ namespace FarmingManagement_FMS.Forms
                                         space.Workspace_2
                                     }).ToList();
                     dataGridView1.DataSource = joinData;
-                }
+        }
 
-                   
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            string rowNumber = (e.RowIndex + 1).ToString(); // 1'den başlasın
+
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
                 dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
             }
         }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtID.ReadOnly = true;
@@ -290,7 +301,7 @@ namespace FarmingManagement_FMS.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             Reload();
-        }
+                    }
 
         private Boolean bdateBoolean = true;
         private void txtBdate_Enter(object sender, EventArgs e)
@@ -299,10 +310,10 @@ namespace FarmingManagement_FMS.Forms
             {
                 txtBdate.Text = "";
                 bdateBoolean = false;
+                }
+                    
+
             }
-                
-            
-        }
         private String emp_name;
         private void btnDelete_Click(object sender, EventArgs e)
         {

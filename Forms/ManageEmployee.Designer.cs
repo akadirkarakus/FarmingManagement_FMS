@@ -91,6 +91,7 @@
             // 
             // txtFname
             // 
+            this.txtFname.Enabled = false;
             this.txtFname.Location = new System.Drawing.Point(185, 153);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(249, 45);
@@ -108,6 +109,7 @@
             // 
             // txtSname
             // 
+            this.txtSname.Enabled = false;
             this.txtSname.Location = new System.Drawing.Point(185, 204);
             this.txtSname.Name = "txtSname";
             this.txtSname.Size = new System.Drawing.Size(249, 45);
@@ -125,6 +127,7 @@
             // 
             // txtLname
             // 
+            this.txtLname.Enabled = false;
             this.txtLname.Location = new System.Drawing.Point(185, 306);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(249, 45);
@@ -142,6 +145,7 @@
             // 
             // txtTname
             // 
+            this.txtTname.Enabled = false;
             this.txtTname.Location = new System.Drawing.Point(185, 255);
             this.txtTname.Name = "txtTname";
             this.txtTname.Size = new System.Drawing.Size(249, 45);
@@ -176,6 +180,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(185, 102);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
