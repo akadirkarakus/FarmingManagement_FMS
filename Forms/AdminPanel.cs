@@ -33,7 +33,9 @@ namespace FarmingManagement_FMS
         private void btnMngEmp_Click(object sender, EventArgs e)
         {
             ManageEmployee m = new ManageEmployee();
+            this.Visible = false;
             m.ShowDialog();
+            this.Visible = true;
         }
     }
 }

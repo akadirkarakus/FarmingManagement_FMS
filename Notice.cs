@@ -17,8 +17,7 @@ namespace FarmingManagement_FMS
         public int notice_id { get; set; }
         public string Supervisor_id { get; set; }
         public string message { get; set; }
-        public string Workspace_1 { get; set; }
-        public string Workspace_2 { get; set; }
+        public string Workspace { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

@@ -25,7 +25,7 @@ namespace FarmingManagement_FMS
                 string ID = txtID.Text.Trim();
                 String pass = HashPassword(txtPass.Text.Trim());
 
-                var user = db.Employees.FirstOrDefault(emp => emp.Emp_id.ToString() == ID && emp.Password == pass);
+                var user = db.Employees.FirstOrDefault(emp => emp.Emp_id == ID && emp.Password == pass);
 
                 if (user != null)
                 {

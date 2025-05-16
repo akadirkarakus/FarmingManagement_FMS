@@ -27,9 +27,8 @@ namespace FarmingManagement_FMS
             using (var db = new FarmingManagementSystemEntities())
             {
                 employee = db.Employees.FirstOrDefault(emp => emp.Emp_id == id);
-
                 if (employee != null)
-                {
+                {   
                     txtID.Text = id;
                     txtFname.Text = employee.Emp_name;
                    //txtSname.Text = employee.Second_name;
@@ -140,7 +139,7 @@ namespace FarmingManagement_FMS
         {
             if (txtNewPass.ReadOnly == true)
             {
-                DialogResult d = MessageBox.Show("Are you sure to change your password Address?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult d = MessageBox.Show("Are you sure to change your password?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (d == DialogResult.Yes)
                 {
                     txtNewPass.ReadOnly = false;

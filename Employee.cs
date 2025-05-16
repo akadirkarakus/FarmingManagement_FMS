@@ -17,7 +17,6 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.Employee_Workspace = new HashSet<Employee_Workspace>();
             this.Equipment_Use = new HashSet<Equipment_Use>();
             this.Notices = new HashSet<Notice>();
             this.Storing_products = new HashSet<Storing_products>();
@@ -36,9 +35,8 @@ namespace FarmingManagement_FMS
         public string eMail { get; set; }
         public string phoneNumber { get; set; }
         public string Password { get; set; }
+        public bool Status { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee_Workspace> Employee_Workspace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipment_Use> Equipment_Use { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -52,5 +50,6 @@ namespace FarmingManagement_FMS
         public virtual Employee Employee1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
+        public virtual Employee_Workspace Employee_Workspace { get; set; }
     }
 }

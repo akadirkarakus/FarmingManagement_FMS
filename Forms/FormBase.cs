@@ -23,14 +23,14 @@ namespace FarmingManagement_FMS
 
         }
 
-        protected String empID = "22983639422";
-        protected void setEmpID(string empID)
+        private static String empID;
+        protected static void setEmpID(string empid)
         {
-            this.empID = empID;
+            empID = empid;
         }
-        protected String getEmpID()
+        protected static String getEmpID()
         {
-            return this.empID;
+            return empID;
         }
         public static string HashPassword(string password)
         {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FarmingManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FarmingManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Animal">
           <Key>
             <PropertyRef Name="Animal_id" />
@@ -45,11 +45,11 @@
           <Property Name="eMail" Type="varchar" MaxLength="50" />
           <Property Name="phoneNumber" Type="varchar" MaxLength="15" />
           <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee_Workspace">
           <Key>
             <PropertyRef Name="Emp_id" />
-            <PropertyRef Name="Workspace_1" />
           </Key>
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Workspace_1" Type="varchar" MaxLength="100" Nullable="false" />
@@ -185,8 +185,7 @@
           <Property Name="notice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Supervisor_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Workspace_1" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Workspace_2" Type="varchar" MaxLength="100" />
+          <Property Name="Workspace" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Seed">
           <Key>
@@ -266,7 +265,7 @@
           <End Role="Employee" Type="Self.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Employee_Workspace" Type="Self.Employee_Workspace" Multiplicity="*" />
+          <End Role="Employee_Workspace" Type="Self.Employee_Workspace" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="Emp_id" />
@@ -546,12 +545,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Notice__Workspac__1BC821DD' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Notice__Workspac__1BC821DD" />-->
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Notice__Workspac__1CBC4616" />-->
         <Association Name="FK__Seed_Trea__Seed___534D60F1">
           <End Role="Seed" Type="Self.Seed" Multiplicity="1" />
           <End Role="Seed_Treatment" Type="Self.Seed_Treatment" Multiplicity="0..1" />
@@ -791,8 +784,7 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
             <End Role="Vet" EntitySet="Vet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FarmingManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -843,7 +835,6 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee_Workspace" Relationship="Self.FK__Employee___Emp_i__74AE54BC" FromRole="Employee" ToRole="Employee_Workspace" />
           <NavigationProperty Name="Equipment_Use" Relationship="Self.FK__Equipment__Emp_i__787EE5A0" FromRole="Employee" ToRole="Equipment_Use" />
           <NavigationProperty Name="Notices" Relationship="Self.FK__Notice__Supervis__1AD3FDA4" FromRole="Employee" ToRole="Notice" />
           <NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Emp_i__01142BA1" FromRole="Employee" ToRole="Storing_products" />
@@ -851,18 +842,8 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <NavigationProperty Name="Field_works" Relationship="Self.Field_work_employees" FromRole="Employee" ToRole="Field_works" />
           <NavigationProperty Name="Employee1" Relationship="Self.Management" FromRole="Employee" ToRole="Employee1" />
           <NavigationProperty Name="Employees" Relationship="Self.Management" FromRole="Employee1" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Employee_Workspace">
-          <Key>
-            <PropertyRef Name="Emp_id" />
-            <PropertyRef Name="Workspace_1" />
-          </Key>
-          <Property Name="Emp_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Workspace_1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Workspace_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Workspace_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Workspace_location_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___Emp_i__74AE54BC" FromRole="Employee_Workspace" ToRole="Employee" />
+          <NavigationProperty Name="Employee_Workspace" Relationship="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" FromRole="Employee" ToRole="Employee_Workspace" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -976,9 +957,8 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <Property Name="notice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Supervisor_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Workspace_1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Workspace_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Notice__Supervis__1AD3FDA4" FromRole="Notice" ToRole="Employee" />
+          <Property Name="Workspace" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Seed">
           <Key>
@@ -1103,20 +1083,6 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
             </Principal>
             <Dependent Role="Storing_products">
               <PropertyRef Name="Barn_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Employee___Emp_i__74AE54BC">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Employee_Workspace" Type="Self.Employee_Workspace" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="Emp_id" />
-            </Principal>
-            <Dependent Role="Employee_Workspace">
-              <PropertyRef Name="Emp_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1327,7 +1293,6 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <EntitySet Name="Barns" EntityType="Self.Barn" />
           <EntitySet Name="Barn_product" EntityType="Self.Barn_product" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Employee_Workspace" EntityType="Self.Employee_Workspace" />
           <EntitySet Name="Equipments" EntityType="Self.Equipment" />
           <EntitySet Name="Equipment_Storage" EntityType="Self.Equipment_Storage" />
           <EntitySet Name="Equipment_Use" EntityType="Self.Equipment_Use" />
@@ -1362,10 +1327,6 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <AssociationSet Name="FK__Storing_p__Barn___00200768" Association="Self.FK__Storing_p__Barn___00200768">
             <End Role="Barn" EntitySet="Barns" />
             <End Role="Storing_products" EntitySet="Storing_products" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employee___Emp_i__74AE54BC" Association="Self.FK__Employee___Emp_i__74AE54BC">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Employee_Workspace" EntitySet="Employee_Workspace" />
           </AssociationSet>
           <AssociationSet Name="FK__Equipment__Emp_i__787EE5A0" Association="Self.FK__Equipment__Emp_i__787EE5A0">
             <End Role="Employee" EntitySet="Employees" />
@@ -1443,7 +1404,37 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Employee1" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Employee_Workspace" EntityType="FarmingManagementSystemModel.Employee_Workspace" />
+          <AssociationSet Name="FK__Employee___Emp_i__74AE54BC" Association="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee_Workspace" EntitySet="Employee_Workspace" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Employee_Workspace">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Workspace_1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Workspace_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Workspace_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Workspace_location_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" FromRole="Employee_Workspace" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Employee___Emp_i__74AE54BC">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FarmingManagementSystemModel.Employee_Workspace" Role="Employee_Workspace" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Employee_Workspace">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1482,6 +1473,7 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="FarmingManagementSystemModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
                 <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
                 <ScalarProperty Name="First_name" ColumnName="First_name" />
@@ -1492,17 +1484,6 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
                 <ScalarProperty Name="eMail" ColumnName="eMail" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employee_Workspace">
-            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Employee_Workspace">
-              <MappingFragment StoreEntitySet="Employee_Workspace">
-                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
-                <ScalarProperty Name="Workspace_1" ColumnName="Workspace_1" />
-                <ScalarProperty Name="Workspace_2" ColumnName="Workspace_2" />
-                <ScalarProperty Name="Workspace_location" ColumnName="Workspace_location" />
-                <ScalarProperty Name="Workspace_location_2" ColumnName="Workspace_location_2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1599,12 +1580,11 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
           <EntitySetMapping Name="Notices">
             <EntityTypeMapping TypeName="FarmingManagementSystemModel.Notice">
               <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="Workspace" ColumnName="Workspace" />
                 <ScalarProperty Name="notice_id" ColumnName="notice_id" />
                 <ScalarProperty Name="Supervisor_id" ColumnName="Supervisor_id" />
                 <ScalarProperty Name="message" ColumnName="message" />
-                <ScalarProperty Name="Workspace_1" ColumnName="Workspace_1" />
-                <ScalarProperty Name="Workspace_2" ColumnName="Workspace_2" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Seeds">
@@ -1700,6 +1680,17 @@ warning 6035: The relationship 'FK__Notice__Workspac__1CBC4616' has columns that
               <ScalarProperty Name="Emp_id" ColumnName="Supervisor_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Employee_Workspace">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Employee_Workspace">
+              <MappingFragment StoreEntitySet="Employee_Workspace">
+                <ScalarProperty Name="Workspace_location_2" ColumnName="Workspace_location_2" />
+                <ScalarProperty Name="Workspace_location" ColumnName="Workspace_location" />
+                <ScalarProperty Name="Workspace_2" ColumnName="Workspace_2" />
+                <ScalarProperty Name="Workspace_1" ColumnName="Workspace_1" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

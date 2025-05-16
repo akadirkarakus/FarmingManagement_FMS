@@ -29,7 +29,6 @@ namespace FarmingManagement_FMS
         public virtual DbSet<Barn> Barns { get; set; }
         public virtual DbSet<Barn_product> Barn_product { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Employee_Workspace> Employee_Workspace { get; set; }
         public virtual DbSet<Equipment> Equipments { get; set; }
         public virtual DbSet<Equipment_Storage> Equipment_Storage { get; set; }
         public virtual DbSet<Equipment_Use> Equipment_Use { get; set; }
@@ -45,5 +44,6 @@ namespace FarmingManagement_FMS
         public virtual DbSet<Storage_location> Storage_location { get; set; }
         public virtual DbSet<Storing_products> Storing_products { get; set; }
         public virtual DbSet<Vet> Vets { get; set; }
+        public virtual DbSet<Employee_Workspace> Employee_Workspace { get; set; }
     }
 }

@@ -53,7 +53,14 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnAnnounce = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtBdate = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnClean = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.chkPersonnelStatus = new System.Windows.Forms.CheckBox();
+            this.lblPersonStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +70,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Agency FB", 26F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.LightYellow;
-            this.label2.Location = new System.Drawing.Point(522, 25);
+            this.label2.Location = new System.Drawing.Point(526, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(358, 62);
             this.label2.TabIndex = 3;
@@ -77,18 +84,17 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1373, 551);
+            this.dataGridView1.Size = new System.Drawing.Size(1373, 578);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // txtFname
             // 
-            this.txtFname.Enabled = false;
             this.txtFname.Location = new System.Drawing.Point(185, 153);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(249, 45);
-            this.txtFname.TabIndex = 6;
+            this.txtFname.TabIndex = 8;
             // 
             // label1
             // 
@@ -102,11 +108,10 @@
             // 
             // txtSname
             // 
-            this.txtSname.Enabled = false;
             this.txtSname.Location = new System.Drawing.Point(185, 204);
             this.txtSname.Name = "txtSname";
             this.txtSname.Size = new System.Drawing.Size(249, 45);
-            this.txtSname.TabIndex = 8;
+            this.txtSname.TabIndex = 9;
             // 
             // label3
             // 
@@ -120,11 +125,10 @@
             // 
             // txtLname
             // 
-            this.txtLname.Enabled = false;
             this.txtLname.Location = new System.Drawing.Point(185, 306);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(249, 45);
-            this.txtLname.TabIndex = 12;
+            this.txtLname.TabIndex = 11;
             // 
             // label4
             // 
@@ -138,7 +142,6 @@
             // 
             // txtTname
             // 
-            this.txtTname.Enabled = false;
             this.txtTname.Location = new System.Drawing.Point(185, 255);
             this.txtTname.Name = "txtTname";
             this.txtTname.Size = new System.Drawing.Size(249, 45);
@@ -156,17 +159,16 @@
             // 
             // txtMail
             // 
-            this.txtMail.Enabled = false;
-            this.txtMail.Location = new System.Drawing.Point(701, 121);
+            this.txtMail.Location = new System.Drawing.Point(692, 153);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(266, 45);
-            this.txtMail.TabIndex = 16;
+            this.txtMail.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(615, 124);
+            this.label6.Location = new System.Drawing.Point(606, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 40);
             this.label6.TabIndex = 15;
@@ -174,11 +176,12 @@
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(185, 102);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(249, 45);
-            this.txtID.TabIndex = 14;
+            this.txtID.TabIndex = 7;
+            this.txtID.Enter += new System.EventHandler(this.txtID_Enter);
             // 
             // label7
             // 
@@ -192,17 +195,16 @@
             // 
             // txtFwork
             // 
-            this.txtFwork.Enabled = false;
-            this.txtFwork.Location = new System.Drawing.Point(701, 223);
+            this.txtFwork.Location = new System.Drawing.Point(692, 255);
             this.txtFwork.Name = "txtFwork";
             this.txtFwork.Size = new System.Drawing.Size(266, 45);
-            this.txtFwork.TabIndex = 20;
+            this.txtFwork.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(507, 226);
+            this.label8.Location = new System.Drawing.Point(498, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(188, 40);
             this.label8.TabIndex = 19;
@@ -210,17 +212,16 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Enabled = false;
-            this.txtPhone.Location = new System.Drawing.Point(701, 172);
+            this.txtPhone.Location = new System.Drawing.Point(692, 204);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(266, 45);
-            this.txtPhone.TabIndex = 18;
+            this.txtPhone.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label9.Location = new System.Drawing.Point(529, 175);
+            this.label9.Location = new System.Drawing.Point(520, 207);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(166, 40);
             this.label9.TabIndex = 17;
@@ -228,17 +229,16 @@
             // 
             // txtSwork
             // 
-            this.txtSwork.Enabled = false;
-            this.txtSwork.Location = new System.Drawing.Point(701, 274);
+            this.txtSwork.Location = new System.Drawing.Point(692, 306);
             this.txtSwork.Name = "txtSwork";
             this.txtSwork.Size = new System.Drawing.Size(266, 45);
-            this.txtSwork.TabIndex = 22;
+            this.txtSwork.TabIndex = 16;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label10.Location = new System.Drawing.Point(478, 277);
+            this.label10.Location = new System.Drawing.Point(469, 309);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(217, 40);
             this.label10.TabIndex = 21;
@@ -249,52 +249,61 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Agency FB", 18F);
             this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnUpdate.Location = new System.Drawing.Point(1052, 790);
+            this.btnUpdate.Location = new System.Drawing.Point(1052, 848);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(343, 87);
-            this.btnUpdate.TabIndex = 23;
+            this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update Employee Information";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Agency FB", 18F);
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnDelete.Location = new System.Drawing.Point(1052, 892);
+            this.btnDelete.Location = new System.Drawing.Point(1052, 950);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(343, 87);
-            this.btnDelete.TabIndex = 24;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete Selected Employee";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Agency FB", 18F);
             this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnAdd.Location = new System.Drawing.Point(1052, 688);
+            this.btnAdd.Location = new System.Drawing.Point(1052, 746);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(343, 87);
-            this.btnAdd.TabIndex = 25;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add New Employee";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAnnounce
             // 
             this.btnAnnounce.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnounce.Font = new System.Drawing.Font("Agency FB", 18F);
             this.btnAnnounce.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnAnnounce.Location = new System.Drawing.Point(1052, 991);
+            this.btnAnnounce.Location = new System.Drawing.Point(1052, 1049);
             this.btnAnnounce.Name = "btnAnnounce";
             this.btnAnnounce.Size = new System.Drawing.Size(343, 87);
-            this.btnAnnounce.TabIndex = 26;
+            this.btnAnnounce.TabIndex = 4;
             this.btnAnnounce.Text = "Make An Announcement";
             this.btnAnnounce.UseVisualStyleBackColor = true;
+            this.btnAnnounce.Click += new System.EventHandler(this.btnAnnounce_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.txtBdate);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnClean);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label1);
@@ -314,28 +323,112 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtMail);
-            this.panel1.Location = new System.Drawing.Point(22, 688);
+            this.panel1.Location = new System.Drawing.Point(22, 746);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1013, 390);
             this.panel1.TabIndex = 27;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.linkLabel1.LinkColor = System.Drawing.Color.MediumTurquoise;
+            this.linkLabel1.Location = new System.Drawing.Point(817, 354);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(141, 28);
+            this.linkLabel1.TabIndex = 31;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "About Passwords";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label12.Location = new System.Drawing.Point(566, 104);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(120, 40);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Birth Date:";
+            // 
+            // txtBdate
+            // 
+            this.txtBdate.Location = new System.Drawing.Point(692, 101);
+            this.txtBdate.Name = "txtBdate";
+            this.txtBdate.Size = new System.Drawing.Size(266, 45);
+            this.txtBdate.TabIndex = 12;
+            this.txtBdate.Text = "YYYY.MM.DD";
+            this.txtBdate.Enter += new System.EventHandler(this.txtBdate_Enter);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Agency FB", 14F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(877, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 69);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnClean
+            // 
+            this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClean.Font = new System.Drawing.Font("Agency FB", 14F);
+            this.btnClean.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnClean.Location = new System.Drawing.Point(692, 7);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(179, 69);
+            this.btnClean.TabIndex = 6;
+            this.btnClean.Text = "Clean Textboxes";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label11.Location = new System.Drawing.Point(364, 20);
+            this.label11.Location = new System.Drawing.Point(22, 20);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(331, 44);
             this.label11.TabIndex = 23;
             this.label11.Text = "Data Of Selected Employee";
+            // 
+            // chkPersonnelStatus
+            // 
+            this.chkPersonnelStatus.AutoSize = true;
+            this.chkPersonnelStatus.Checked = true;
+            this.chkPersonnelStatus.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPersonnelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.chkPersonnelStatus.Location = new System.Drawing.Point(22, 697);
+            this.chkPersonnelStatus.Name = "chkPersonnelStatus";
+            this.chkPersonnelStatus.Size = new System.Drawing.Size(373, 44);
+            this.chkPersonnelStatus.TabIndex = 28;
+            this.chkPersonnelStatus.Text = "Displaying active employees only.";
+            this.chkPersonnelStatus.UseVisualStyleBackColor = true;
+            this.chkPersonnelStatus.CheckedChanged += new System.EventHandler(this.chkPersonnelStatus_CheckedChanged);
+            // 
+            // lblPersonStatus
+            // 
+            this.lblPersonStatus.AutoSize = true;
+            this.lblPersonStatus.ForeColor = System.Drawing.Color.Lime;
+            this.lblPersonStatus.Location = new System.Drawing.Point(26, 70);
+            this.lblPersonStatus.Name = "lblPersonStatus";
+            this.lblPersonStatus.Size = new System.Drawing.Size(190, 40);
+            this.lblPersonStatus.TabIndex = 29;
+            this.lblPersonStatus.Text = "Active employees";
             // 
             // ManageEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1419, 1106);
+            this.ClientSize = new System.Drawing.Size(1419, 1157);
+            this.Controls.Add(this.lblPersonStatus);
+            this.Controls.Add(this.chkPersonnelStatus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAnnounce);
             this.Controls.Add(this.btnAdd);
@@ -384,5 +477,12 @@
         private System.Windows.Forms.Button btnAnnounce;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtBdate;
+        private System.Windows.Forms.CheckBox chkPersonnelStatus;
+        private System.Windows.Forms.Label lblPersonStatus;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

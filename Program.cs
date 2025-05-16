@@ -18,11 +18,11 @@ namespace FarmingManagement_FMS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AdminPanel());
 
-            /*
+            
             // DENEMELERİ HIZLANDIRMAK İÇİN İPTAL EDİLDİ. TEKRAR AÇILACAK!!!!
             while (true)
             {
-                using (var login = new Form1())
+                using (var login = new Login())
                 {
                     if (login.ShowDialog() == DialogResult.OK)
                     {
@@ -45,7 +45,7 @@ namespace FarmingManagement_FMS
                 }
             }
 
-            */
+            
         }
     }
 }

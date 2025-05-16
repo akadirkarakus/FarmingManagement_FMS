@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Announcement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Announcement.Designer.cs">
+      <DependentUpon>Announcement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AccountManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="Vet.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Announcement.resx">
+      <DependentUpon>Announcement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AccountManager.resx">
       <DependentUpon>AccountManager.cs</DependentUpon>
     </EmbeddedResource>
