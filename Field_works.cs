@@ -18,17 +18,21 @@ namespace FarmingManagement_FMS
         public Field_works()
         {
             this.Employees = new HashSet<Employee>();
-            this.Seeds = new HashSet<Seed>();
+            this.Field_work_seeds3 = new HashSet<Field_work_seeds3>();
+            this.Field_work_employees2 = new HashSet<Field_work_employees2>();
         }
     
         public int Work_id { get; set; }
         public int Field_no { get; set; }
         public string Field_WorkDone { get; set; }
+        public Nullable<System.DateTime> Work_Date { get; set; }
     
         public virtual Field Field { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seed> Seeds { get; set; }
+        public virtual ICollection<Field_work_seeds3> Field_work_seeds3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Field_work_employees2> Field_work_employees2 { get; set; }
     }
 }

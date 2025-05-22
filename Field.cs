@@ -22,10 +22,11 @@ namespace FarmingManagement_FMS
         }
     
         public int Field_no { get; set; }
-        public string Location_field { get; set; }
         public Nullable<System.DateTime> Planting_date { get; set; }
         public double Field_acreage { get; set; }
         public int Land_no { get; set; }
+        public bool Status { get; set; }
+        public string Name { get; set; }
     
         public virtual Land Land { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

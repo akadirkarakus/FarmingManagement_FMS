@@ -22,6 +22,9 @@ namespace FarmingManagement_FMS.Forms
         private void ManageEmployee_Load(object sender, EventArgs e)
         {
             Reload();
+            String[] workspaces = { "Field", "Farm", "Barn", "Storage" };
+            cmbFwork.Items.AddRange(workspaces);
+            cmbSwork.Items.AddRange(workspaces);
         }
 
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -45,37 +48,10 @@ namespace FarmingManagement_FMS.Forms
         {
             using (var db = new FarmingManagementSystemEntities())
             {
-                if(empStatus)
-                {
-                var joinData = (from emp in db.Employees
-                                 join space in db.Employee_Workspace
-                                 on emp.Emp_id equals space.Emp_id
-                                    where emp.Status == true
-                                 select new
-                                 {
-                                     emp.Emp_id,
-                                     emp.Emp_name,
-                                     emp.Birth_date,
-                                     emp.phoneNumber,
-                                     emp.eMail,
-                                        emp.Status,
-                                     space.Workspace_1,
-                                     space.Workspace_2
-                                 }).ToList();
-                dataGridView1.DataSource = joinData;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
-                
-
-                
-            }
-                else
-                {
                     var joinData = (from emp in db.Employees
                                     join space in db.Employee_Workspace
                                     on emp.Emp_id equals space.Emp_id
-                                    where emp.Status == false
+                                    where emp.Status == empStatus
                                     select new
                                     {
                                         emp.Emp_id,
@@ -88,12 +64,13 @@ namespace FarmingManagement_FMS.Forms
                                         space.Workspace_2
                                     }).ToList();
                     dataGridView1.DataSource = joinData;
-        }
-
-        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            var grid = sender as DataGridView;
-            string rowNumber = (e.RowIndex + 1).ToString(); // 1'den başlasın
+                dataGridView1.Columns["Emp_id"].HeaderText = "ID";
+                dataGridView1.Columns["Emp_Name"].HeaderText = "Full Name";
+                dataGridView1.Columns["Birth_Date"].HeaderText = "Birth Date";
+                dataGridView1.Columns["phoneNumber"].HeaderText = "Phone Number";
+                dataGridView1.Columns["eMail"].HeaderText = "E-Mail Address";
+                dataGridView1.Columns["Workspace_1"].HeaderText = "First Workspace";
+                dataGridView1.Columns["Workspace_2"].HeaderText = "Second Workspace";
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -112,10 +89,16 @@ namespace FarmingManagement_FMS.Forms
                 txtMail.Text = row.Cells["eMail"].Value.ToString();
                 txtBdate.Text = Convert.ToDateTime(row.Cells["Birth_date"].Value).ToString("yyyy.MM.dd");
                 txtPhone.Text = row.Cells["phoneNumber"].Value.ToString();
-                txtFwork.Text = row.Cells["Workspace_1"].Value.ToString();
-                txtSwork.Text = row.Cells["Workspace_2"].Value?.ToString() ?? "null";
+                cmbFwork.Text = row.Cells["Workspace_1"].Value.ToString();
+                //cmbSwork.Text = row.Cells["Workspace_2"].Value?.ToString() ?? "null";
 
-                String id = txtID.Text;
+                var value = row.Cells["Workspace_2"].Value;//cmb2 için.
+                if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
+                    cmbSwork.SelectedIndex = -1;
+                else
+                    cmbSwork.Text = value.ToString();
+
+                    String id = txtID.Text;
                 using (var db = new FarmingManagementSystemEntities())
                 {
                     var employee = db.Employees.FirstOrDefault(emp => emp.Emp_id == id);
@@ -161,8 +144,8 @@ namespace FarmingManagement_FMS.Forms
                         Employee_Workspace ws = new Employee_Workspace
                         {
                             Emp_id = id,
-                            Workspace_1 = txtFwork.Text.Trim(),
-                            Workspace_2 = string.IsNullOrWhiteSpace(txtSwork.Text) ? null : txtSwork.Text.Trim()
+                            Workspace_1 = cmbFwork.Text.Trim(),
+                            Workspace_2 = string.IsNullOrWhiteSpace(cmbSwork.Text) ? null : cmbSwork.Text.Trim()
                         };
 
                         db.Employees.Add(newEmp);
@@ -204,8 +187,8 @@ namespace FarmingManagement_FMS.Forms
                             employee.Birth_date = bDate;
                             employee.eMail = txtMail.Text.Trim();
                             employee.phoneNumber = txtPhone.Text.Trim();
-                            workspace.Workspace_1 = txtFwork.Text.Trim();
-                            workspace.Workspace_2 = txtSwork.Text.Trim();
+                            workspace.Workspace_1 = cmbFwork.Text.Trim();
+                            workspace.Workspace_2 = cmbSwork.Text.Trim();
                             db.SaveChanges();
                             MessageBox.Show("All of the changed information about the employee " + employee.Emp_name + " has been updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Reload();
@@ -225,7 +208,7 @@ namespace FarmingManagement_FMS.Forms
         {
             if (txtID.Text.Trim().Length != 11)
             {
-                MessageBox.Show("ID must be consist of 11 character.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ID must consist of 11 characters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else if (txtFname.Text.Trim().Length < 3)
@@ -238,7 +221,7 @@ namespace FarmingManagement_FMS.Forms
                 MessageBox.Show("Last name can not be null!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else if (txtFwork.Text.Trim().Length < 2)
+            else if (cmbFwork.Text.Trim().Length < 2)
             {
                 MessageBox.Show("First Workspace can not be null!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -283,8 +266,8 @@ namespace FarmingManagement_FMS.Forms
             txtLname.Text = "";
             txtMail.Text = "";
             txtPhone.Text = "";
-            txtFwork.Text = "";
-            txtSwork.Text = "";
+            cmbFwork.Text = "";
+            cmbSwork.Text = "";
             txtBdate.Text = "";
         }
 
@@ -332,7 +315,7 @@ namespace FarmingManagement_FMS.Forms
                         {
                             employee.Status = false;
                             db.SaveChanges();
-                            MessageBox.Show("The employee " + employee.Emp_name + " has been deleted. You can see the information of deleted employee through changing the chechbox.", "Employee Deleted.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("The employee " + employee.Emp_name + " has been deleted. You can see the information of deleted employee through changing the chechbox.", "Employee Has Been Deleted.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Reload();
                         }
                         else
@@ -372,6 +355,21 @@ namespace FarmingManagement_FMS.Forms
         {
             Announcement a = new Announcement();
             a.Show();
+        }
+
+        private void dataGridView1_RowPostPaint_1(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                string rowNumber = (e.RowIndex + 1).ToString();
+                e.Graphics.DrawString(
+                    rowNumber,
+                    dataGridView1.Font,
+                    b,
+                    e.RowBounds.Location.X + 15,
+                    e.RowBounds.Location.Y + 4
+                );
+            }
         }
     }
 }

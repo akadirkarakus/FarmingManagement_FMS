@@ -37,5 +37,13 @@ namespace FarmingManagement_FMS
             m.ShowDialog();
             this.Visible = true;
         }
+
+        private void btnFarminData_Click(object sender, EventArgs e)
+        {
+            ManageFarmingData f = new ManageFarmingData();
+            this.Visible = false;
+            f.ShowDialog();
+            this.Visible = true;
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace FarmingManagement_FMS
 
         private void button1_Click(object sender, EventArgs e)//CLEAR TEXTBOX
         {
-            DialogResult d = MessageBox.Show("Announcement text will be deleted from your screen. Do you want to comtinue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult d = MessageBox.Show("Announcement text will be deleted from your screen. Do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (d == DialogResult.Yes)
             {
                 richTextBox1.Text = "";

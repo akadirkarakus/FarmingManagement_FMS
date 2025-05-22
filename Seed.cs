@@ -17,15 +17,15 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Seed()
         {
-            this.Field_works = new HashSet<Field_works>();
+            this.Field_work_seeds3 = new HashSet<Field_work_seeds3>();
         }
     
         public string Seed_genus { get; set; }
-        public Nullable<System.DateTime> Seed_date { get; set; }
+        public string Seed_date { get; set; }
         public Nullable<double> Cultivation_time { get; set; }
     
         public virtual Seed_Treatment Seed_Treatment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Field_works> Field_works { get; set; }
+        public virtual ICollection<Field_work_seeds3> Field_work_seeds3 { get; set; }
     }
 }

@@ -28,6 +28,8 @@ namespace FarmingManagement_FMS
         public string Land_name { get; set; }
         public double Acreage { get; set; }
         public System.DateTime Date_purchase { get; set; }
+        public bool Status { get; set; }
+        public string Land_City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Barn> Barns { get; set; }

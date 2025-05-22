@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FarmingManagement_FMS.Forms;
 
 namespace FarmingManagement_FMS
 {
@@ -16,7 +17,7 @@ namespace FarmingManagement_FMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminPanel());
+            Application.Run(new Farms());
 
             
             // DENEMELERİ HIZLANDIRMAK İÇİN İPTAL EDİLDİ. TEKRAR AÇILACAK!!!!
@@ -31,7 +32,7 @@ namespace FarmingManagement_FMS
                         if (login.userType == "admin")
                             panel = new AdminPanel();
                         else
-                            panel = new PersonnelPanel();
+                            panel = new PersonnelStart();
 
                         using (panel)
                         {

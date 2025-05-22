@@ -42,17 +42,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtFwork = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtSwork = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnAnnounce = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbSwork = new System.Windows.Forms.ComboBox();
+            this.cmbFwork = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.txtBdate = new System.Windows.Forms.TextBox();
@@ -87,11 +87,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(1373, 578);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint_1);
             // 
             // txtFname
             // 
-            this.txtFname.Enabled = false;
             this.txtFname.Location = new System.Drawing.Point(185, 153);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(249, 45);
@@ -109,7 +108,6 @@
             // 
             // txtSname
             // 
-            this.txtSname.Enabled = false;
             this.txtSname.Location = new System.Drawing.Point(185, 204);
             this.txtSname.Name = "txtSname";
             this.txtSname.Size = new System.Drawing.Size(249, 45);
@@ -127,7 +125,6 @@
             // 
             // txtLname
             // 
-            this.txtLname.Enabled = false;
             this.txtLname.Location = new System.Drawing.Point(185, 306);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(249, 45);
@@ -145,7 +142,6 @@
             // 
             // txtTname
             // 
-            this.txtTname.Enabled = false;
             this.txtTname.Location = new System.Drawing.Point(185, 255);
             this.txtTname.Name = "txtTname";
             this.txtTname.Size = new System.Drawing.Size(249, 45);
@@ -163,7 +159,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(692, 153);
+            this.txtMail.Location = new System.Drawing.Point(692, 151);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(266, 45);
             this.txtMail.TabIndex = 13;
@@ -172,7 +168,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(606, 156);
+            this.label6.Location = new System.Drawing.Point(606, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 40);
             this.label6.TabIndex = 15;
@@ -180,7 +176,6 @@
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(185, 102);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
@@ -198,18 +193,11 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "ID:";
             // 
-            // txtFwork
-            // 
-            this.txtFwork.Location = new System.Drawing.Point(692, 255);
-            this.txtFwork.Name = "txtFwork";
-            this.txtFwork.Size = new System.Drawing.Size(266, 45);
-            this.txtFwork.TabIndex = 15;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(498, 258);
+            this.label8.Location = new System.Drawing.Point(498, 252);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(188, 40);
             this.label8.TabIndex = 19;
@@ -217,7 +205,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(692, 204);
+            this.txtPhone.Location = new System.Drawing.Point(692, 200);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(266, 45);
             this.txtPhone.TabIndex = 14;
@@ -226,24 +214,17 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label9.Location = new System.Drawing.Point(520, 207);
+            this.label9.Location = new System.Drawing.Point(520, 203);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(166, 40);
             this.label9.TabIndex = 17;
             this.label9.Text = "Phone Number:";
             // 
-            // txtSwork
-            // 
-            this.txtSwork.Location = new System.Drawing.Point(692, 306);
-            this.txtSwork.Name = "txtSwork";
-            this.txtSwork.Size = new System.Drawing.Size(266, 45);
-            this.txtSwork.TabIndex = 16;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label10.Location = new System.Drawing.Point(469, 309);
+            this.label10.Location = new System.Drawing.Point(469, 304);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(217, 40);
             this.label10.TabIndex = 21;
@@ -304,6 +285,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbSwork);
+            this.panel1.Controls.Add(this.cmbFwork);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.txtBdate);
@@ -315,11 +298,9 @@
             this.panel1.Controls.Add(this.txtFname);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtSname);
-            this.panel1.Controls.Add(this.txtSwork);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtTname);
-            this.panel1.Controls.Add(this.txtFwork);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtLname);
@@ -333,12 +314,30 @@
             this.panel1.Size = new System.Drawing.Size(1013, 390);
             this.panel1.TabIndex = 27;
             // 
+            // cmbSwork
+            // 
+            this.cmbSwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSwork.FormattingEnabled = true;
+            this.cmbSwork.Location = new System.Drawing.Point(692, 301);
+            this.cmbSwork.Name = "cmbSwork";
+            this.cmbSwork.Size = new System.Drawing.Size(266, 48);
+            this.cmbSwork.TabIndex = 32;
+            // 
+            // cmbFwork
+            // 
+            this.cmbFwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFwork.FormattingEnabled = true;
+            this.cmbFwork.Location = new System.Drawing.Point(692, 249);
+            this.cmbFwork.Name = "cmbFwork";
+            this.cmbFwork.Size = new System.Drawing.Size(266, 48);
+            this.cmbFwork.TabIndex = 30;
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Agency FB", 12F);
             this.linkLabel1.LinkColor = System.Drawing.Color.MediumTurquoise;
-            this.linkLabel1.Location = new System.Drawing.Point(817, 354);
+            this.linkLabel1.Location = new System.Drawing.Point(817, 352);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(141, 28);
             this.linkLabel1.TabIndex = 31;
@@ -470,11 +469,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtFwork;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtSwork;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
@@ -489,5 +486,7 @@
         private System.Windows.Forms.CheckBox chkPersonnelStatus;
         private System.Windows.Forms.Label lblPersonStatus;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ComboBox cmbFwork;
+        private System.Windows.Forms.ComboBox cmbSwork;
     }
 }

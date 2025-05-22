@@ -45,5 +45,7 @@ namespace FarmingManagement_FMS
         public virtual DbSet<Storing_products> Storing_products { get; set; }
         public virtual DbSet<Vet> Vets { get; set; }
         public virtual DbSet<Employee_Workspace> Employee_Workspace { get; set; }
+        public virtual DbSet<Field_work_seeds3> Field_work_seeds3 { get; set; }
+        public virtual DbSet<Field_work_employees2> Field_work_employees2 { get; set; }
     }
 }

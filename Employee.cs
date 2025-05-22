@@ -23,6 +23,7 @@ namespace FarmingManagement_FMS
             this.Farm_Work = new HashSet<Farm_Work>();
             this.Field_works = new HashSet<Field_works>();
             this.Employees = new HashSet<Employee>();
+            this.Field_work_employees2 = new HashSet<Field_work_employees2>();
         }
     
         public string Emp_id { get; set; }
@@ -51,5 +52,7 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual Employee_Workspace Employee_Workspace { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Field_work_employees2> Field_work_employees2 { get; set; }
     }
 }

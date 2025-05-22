@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f6ccfd4738374f1da0843341b646ef30" Name="Diagram1" ZoomLevel="98">
+      <Diagram DiagramId="f6ccfd4738374f1da0843341b646ef30" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Animal" Width="1.5" PointX="8.75" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Barn" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Barn_product" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
@@ -19,10 +19,10 @@
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Field_works" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Land" Width="1.5" PointX="1.5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Notice" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FarmingManagementSystemModel.Seed" Width="1.5" PointX="3.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Seed" Width="1.5" PointX="3.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Seed_Treatment" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Storage_location" Width="1.5" PointX="3.75" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="FarmingManagementSystemModel.Storing_products" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Storing_products" Width="1.5" PointX="6.875" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Vet" Width="1.5" PointX="11" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Examinati__Anima__14270015" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Vet__Animal_id__5812160E" ManuallyRouted="false" />
@@ -46,10 +46,15 @@
         <AssociationConnector Association="FarmingManagementSystemModel.Farm_work_employee" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.Farm_work_location" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.Field_work_employees" ManuallyRouted="false" />
-        <AssociationConnector Association="FarmingManagementSystemModel.Field_work_seeds" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.Management" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Employee_Workspace" Width="1.5" PointX="3" PointY="9.625" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Field_work_seeds3" Width="2.25" PointX="9.25" PointY="12.5" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field_wor__Seed___2EDAF651" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field_wor__Work___2DE6D218" />
+        <EntityTypeShape EntityType="FarmingManagementSystemModel.Field_work_employees2" Width="1.5" PointX="8.25" PointY="9.125" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field_wor__Emp_i__32AB8735" />
+        <AssociationConnector Association="FarmingManagementSystemModel.FK__Field_wor__Work___31B762FC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

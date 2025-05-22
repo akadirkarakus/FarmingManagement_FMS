@@ -30,11 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnMngEmp = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnRunSQL = new System.Windows.Forms.Button();
+            this.btnFarminData = new System.Windows.Forms.Button();
+            this.btnPresetQuery = new System.Windows.Forms.Button();
+            this.vtbAccountManager = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,67 +61,68 @@
             this.btnMngEmp.UseVisualStyleBackColor = true;
             this.btnMngEmp.Click += new System.EventHandler(this.btnMngEmp_Click);
             // 
-            // button1
+            // btnRunSQL
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Agency FB", 18F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.Location = new System.Drawing.Point(349, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 98);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Run SQL Commands";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRunSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRunSQL.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.btnRunSQL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnRunSQL.Location = new System.Drawing.Point(349, 165);
+            this.btnRunSQL.Name = "btnRunSQL";
+            this.btnRunSQL.Size = new System.Drawing.Size(300, 98);
+            this.btnRunSQL.TabIndex = 2;
+            this.btnRunSQL.Text = "Run SQL Commands";
+            this.btnRunSQL.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnFarminData
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Agency FB", 18F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button2.Location = new System.Drawing.Point(34, 278);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(300, 98);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Manage Farming Data";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnFarminData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFarminData.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.btnFarminData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnFarminData.Location = new System.Drawing.Point(34, 278);
+            this.btnFarminData.Name = "btnFarminData";
+            this.btnFarminData.Size = new System.Drawing.Size(300, 98);
+            this.btnFarminData.TabIndex = 3;
+            this.btnFarminData.Text = "Manage Farming Data";
+            this.btnFarminData.UseVisualStyleBackColor = true;
+            this.btnFarminData.Click += new System.EventHandler(this.btnFarminData_Click);
             // 
-            // button3
+            // btnPresetQuery
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Agency FB", 18F);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button3.Location = new System.Drawing.Point(349, 278);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(300, 98);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Manage Preset Queries";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPresetQuery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPresetQuery.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.btnPresetQuery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPresetQuery.Location = new System.Drawing.Point(349, 278);
+            this.btnPresetQuery.Name = "btnPresetQuery";
+            this.btnPresetQuery.Size = new System.Drawing.Size(300, 98);
+            this.btnPresetQuery.TabIndex = 4;
+            this.btnPresetQuery.Text = "Manage Preset Queries";
+            this.btnPresetQuery.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // vtbAccountManager
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Agency FB", 18F);
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button4.Location = new System.Drawing.Point(34, 389);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(426, 72);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Account Manager";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.vtbAccountManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vtbAccountManager.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.vtbAccountManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.vtbAccountManager.Location = new System.Drawing.Point(34, 389);
+            this.vtbAccountManager.Name = "vtbAccountManager";
+            this.vtbAccountManager.Size = new System.Drawing.Size(426, 72);
+            this.vtbAccountManager.TabIndex = 5;
+            this.vtbAccountManager.Text = "Account Manager";
+            this.vtbAccountManager.UseVisualStyleBackColor = true;
+            this.vtbAccountManager.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // btnLogout
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Agency FB", 18F);
-            this.button5.ForeColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(475, 389);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(174, 72);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Logout";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.btnLogout.ForeColor = System.Drawing.Color.Red;
+            this.btnLogout.Location = new System.Drawing.Point(475, 389);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(174, 72);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.button5_Click);
             // 
             // AdminPanel
             // 
@@ -129,11 +130,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(686, 495);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.vtbAccountManager);
+            this.Controls.Add(this.btnPresetQuery);
+            this.Controls.Add(this.btnFarminData);
+            this.Controls.Add(this.btnRunSQL);
             this.Controls.Add(this.btnMngEmp);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,10 +150,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMngEmp;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnRunSQL;
+        private System.Windows.Forms.Button btnFarminData;
+        private System.Windows.Forms.Button btnPresetQuery;
+        private System.Windows.Forms.Button vtbAccountManager;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
