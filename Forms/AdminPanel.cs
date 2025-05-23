@@ -45,5 +45,11 @@ namespace FarmingManagement_FMS
             f.ShowDialog();
             this.Visible = true;
         }
+
+        private void btnRunSQL_Click(object sender, EventArgs e)
+        {
+            RunSqlForm frm = new RunSqlForm();
+            frm.Show();
+        }
     }
 }

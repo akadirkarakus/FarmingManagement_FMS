@@ -18,7 +18,6 @@ namespace FarmingManagement_FMS
         public Animal()
         {
             this.Examinations = new HashSet<Examination>();
-            this.Vets = new HashSet<Vet>();
         }
     
         public int Animal_id { get; set; }
@@ -29,8 +28,6 @@ namespace FarmingManagement_FMS
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vet> Vets { get; set; }
         public virtual Farm Farm { get; set; }
     }
 }

@@ -13,11 +13,17 @@ namespace FarmingManagement_FMS.Forms
 {
     public partial class Farm_Works : FormBase
     {
-        private int farmNo;
-        public Farm_Works(int farmNo) //eğer bütün farmlar listelenecekse farmNo değeri -1 olur.
+      
+        public Farm_Works() //eğer bütün farmlar listelenecekse farmNo değeri -1 olur.
         {
-            this.farmNo = farmNo;   
             InitializeComponent();
+            using (var db = new FarmingManagementSystemEntities())
+            {
+                var farmNumbers = db.Farms.Select(s => s.Farm_no.ToString()).ToList();
+                farmNumbers.Insert(0, "All Farms");
+                cmbFarms.DataSource = farmNumbers;
+            }
+            Reload();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,7 +34,9 @@ namespace FarmingManagement_FMS.Forms
         {
             using (var db = new FarmingManagementSystemEntities())
             {
-                if(farmNo == -1)
+                String farmNum = cmbFarms.Text;
+
+                if (farmNum == "All Farms")
                 {
                     var data = (from fa in db.Farms
                                 join fw in db.Farm_Work on fa.Farm_no equals fw.Farm_no
@@ -49,6 +57,7 @@ namespace FarmingManagement_FMS.Forms
                 }
                 else
                 {
+                    int farmNo = Int32.Parse(farmNum);
                     var data = (from fa in db.Farms
                                 join fw in db.Farm_Work on fa.Farm_no equals fw.Farm_no
                                 join fe in db.Farm_work_employee2 on fw.Work_id equals fe.Work_id
@@ -67,7 +76,6 @@ namespace FarmingManagement_FMS.Forms
 
                                 }).ToList();
                     dataGridView1.DataSource = data;
-                    lblFarmName.Text = "Farm:" + farmNo; 
                 }
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -80,6 +88,8 @@ namespace FarmingManagement_FMS.Forms
 
                 comboBox1.DataSource = farmTask;
                 comboBox1.SelectedIndex = -1;
+
+                
             }
         }
 
@@ -95,7 +105,7 @@ namespace FarmingManagement_FMS.Forms
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                 txtFarmNo.Text = row.Cells["Farm_no"].Value.ToString();
-                txtWorkDate.Text = Convert.ToDateTime(row.Cells["Work_Date"].Value).ToString("yyyy.MM.dd");
+                txtWorkDate.Text = Convert.ToDateTime(row.Cells["Work_Date"].Value).ToString("yyyy-MM-dd");
                 txtEmpID.Text = row.Cells["Emp_id"].Value.ToString();
                 comboBox1.Text = row.Cells["Farm_WorkDone"].Value.ToString();
                 txtWorkDate.Text = row.Cells["Work_Date"].Value.ToString();
@@ -152,6 +162,11 @@ namespace FarmingManagement_FMS.Forms
             txtFarmNo.Text = "";
             txtWorkDate.Text = "";
             comboBox1.SelectedIndex = -1;
+        }
+
+        private void cmbFarms_TextChanged(object sender, EventArgs e)
+        {
+            Reload();
         }
     }
 }

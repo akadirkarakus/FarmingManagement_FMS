@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.cmbFarms = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcFarm)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -233,7 +234,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1037, 285);
             this.dataGridView1.TabIndex = 62;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-//            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // button2
             // 
@@ -248,12 +248,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // cmbFarms
+            // 
+            this.cmbFarms.FormattingEnabled = true;
+            this.cmbFarms.Location = new System.Drawing.Point(118, 130);
+            this.cmbFarms.Name = "cmbFarms";
+            this.cmbFarms.Size = new System.Drawing.Size(121, 48);
+            this.cmbFarms.TabIndex = 68;
+            this.cmbFarms.TextChanged += new System.EventHandler(this.cmbFarms_TextChanged);
+            // 
             // Farm_Works
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1061, 760);
+            this.Controls.Add(this.cmbFarms);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClean);
@@ -298,5 +308,6 @@
         private System.Windows.Forms.TextBox txtEmpID;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cmbFarms;
     }
 }

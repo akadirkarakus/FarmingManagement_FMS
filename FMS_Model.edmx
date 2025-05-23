@@ -233,10 +233,10 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <PropertyRef Name="Vet_id" />
           </Key>
           <Property Name="Vet_id" Type="int" Nullable="false" />
-          <Property Name="Animal_id" Type="int" Nullable="false" />
           <Property Name="Vet_name" Type="varchar" MaxLength="50" />
           <Property Name="Clinic_name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Clinic_location" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Clinic_Location" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <Association Name="FK__Animal__Farm_No__3493CFA7">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
@@ -596,20 +596,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vet__Animal_id__5812160E">
-          <End Role="Animal" Type="Self.Animal" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Vet" Type="Self.Vet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Animal">
-              <PropertyRef Name="Animal_id" />
-            </Principal>
-            <Dependent Role="Vet">
-              <PropertyRef Name="Animal_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="FarmingManagementSystemModelStoreContainer">
           <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barn" EntityType="Self.Barn" Schema="dbo" store:Type="Tables" />
@@ -749,10 +735,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <End Role="Field" EntitySet="Field" />
             <End Role="Storing_products" EntitySet="Storing_products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vet__Animal_id__5812160E" Association="Self.FK__Vet__Animal_id__5812160E">
-            <End Role="Animal" EntitySet="Animal" />
-            <End Role="Vet" EntitySet="Vet" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
 		<!-- CSDL content -->
@@ -766,7 +748,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Species" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="Birth_date" Type="DateTime" Precision="0" />
 					<NavigationProperty Name="Examinations" Relationship="Self.FK__Examinati__Anima__14270015" FromRole="Animal" ToRole="Examination" />
-					<NavigationProperty Name="Vets" Relationship="Self.FK__Vet__Animal_id__5812160E" FromRole="Animal" ToRole="Vet" />
           <Property Name="Farm_No" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Farm" Relationship="FarmingManagementSystemModel.FK__Animal__Farm_No__3493CFA7" FromRole="Animal" ToRole="Farm" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
@@ -966,12 +947,11 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						<PropertyRef Name="Vet_id" />
 					</Key>
 					<Property Name="Vet_id" Type="Int32" Nullable="false" />
-					<Property Name="Animal_id" Type="Int32" Nullable="false" />
 					<Property Name="Vet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="Clinic_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Clinic_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-					<NavigationProperty Name="Animal" Relationship="Self.FK__Vet__Animal_id__5812160E" FromRole="Vet" ToRole="Animal" />
 					<NavigationProperty Name="Examinations" Relationship="Self.FK__Examinati__Vet_i__151B244E" FromRole="Vet" ToRole="Examination" />
+          <Property Name="Clinic_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
 				</EntityType>
 				<Association Name="FK__Examinati__Anima__14270015">
 					<End Role="Animal" Type="Self.Animal" Multiplicity="1">
@@ -983,20 +963,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 							<PropertyRef Name="Animal_id" />
 						</Principal>
 						<Dependent Role="Examination">
-							<PropertyRef Name="Animal_id" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Vet__Animal_id__5812160E">
-					<End Role="Animal" Type="Self.Animal" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Vet" Type="Self.Vet" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Animal">
-							<PropertyRef Name="Animal_id" />
-						</Principal>
-						<Dependent Role="Vet">
 							<PropertyRef Name="Animal_id" />
 						</Dependent>
 					</ReferentialConstraint>
@@ -1224,10 +1190,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<AssociationSet Name="FK__Examinati__Anima__14270015" Association="Self.FK__Examinati__Anima__14270015">
 						<End Role="Animal" EntitySet="Animals" />
 						<End Role="Examination" EntitySet="Examinations" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Vet__Animal_id__5812160E" Association="Self.FK__Vet__Animal_id__5812160E">
-						<End Role="Animal" EntitySet="Animals" />
-						<End Role="Vet" EntitySet="Vets" />
 					</AssociationSet>
 					<AssociationSet Name="FK__Barn__Land_no__440B1D61" Association="Self.FK__Barn__Land_no__440B1D61">
 						<End Role="Land" EntitySet="Lands" />
@@ -1663,11 +1625,11 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<EntitySetMapping Name="Vets">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Vet">
 							<MappingFragment StoreEntitySet="Vet">
-								<ScalarProperty Name="Vet_id" ColumnName="Vet_id" />
-								<ScalarProperty Name="Animal_id" ColumnName="Animal_id" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Clinic_Location" ColumnName="Clinic_Location" />
+                <ScalarProperty Name="Vet_id" ColumnName="Vet_id" />
 								<ScalarProperty Name="Vet_name" ColumnName="Vet_name" />
 								<ScalarProperty Name="Clinic_name" ColumnName="Clinic_name" />
-								<ScalarProperty Name="Clinic_location" ColumnName="Clinic_location" />
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>

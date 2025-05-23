@@ -21,12 +21,11 @@ namespace FarmingManagement_FMS
         }
     
         public int Vet_id { get; set; }
-        public int Animal_id { get; set; }
         public string Vet_name { get; set; }
         public string Clinic_name { get; set; }
-        public string Clinic_location { get; set; }
+        public string Clinic_Location { get; set; }
+        public Nullable<bool> Status { get; set; }
     
-        public virtual Animal Animal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
     }

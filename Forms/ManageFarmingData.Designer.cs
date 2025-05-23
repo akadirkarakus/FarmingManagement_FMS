@@ -147,6 +147,7 @@
             this.lblFarm.Size = new System.Drawing.Size(68, 33);
             this.lblFarm.TabIndex = 18;
             this.lblFarm.Text = "Farms";
+            this.lblFarm.Click += new System.EventHandler(this.lblFarm_Click);
             // 
             // lblBarn
             // 

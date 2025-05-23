@@ -105,7 +105,12 @@ namespace FarmingManagement_FMS.Forms
 
         private void btnWork_Click(object sender, EventArgs e)
         {
-            Farm_Works fw = new Farm_Works(-1);
+            int farmNo;
+            if (txtID.Text != "")
+                farmNo = Convert.ToInt32(txtID.Text);
+            else
+                farmNo = -1;
+            Farm_Works fw = new Farm_Works();
             fw.Show();
         }
 
@@ -132,7 +137,7 @@ namespace FarmingManagement_FMS.Forms
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                     farmNo = Int32.Parse(row.Cells["Farm_no"].Value.ToString());
-                    Farm_Works fw = new Farm_Works(farmNo);
+                    AnimalsForm fw = new AnimalsForm(farmNo);
                     fw.Show();
                 }
             }
@@ -265,7 +270,9 @@ namespace FarmingManagement_FMS.Forms
 
         private void btnAnimal_Click(object sender, EventArgs e)
         {
-
+            AnimalsForm a = new AnimalsForm(-1);
+            this.Visible = false;
+            a.Show();
         }
     }
 }

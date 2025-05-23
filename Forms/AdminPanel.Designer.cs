@@ -72,6 +72,7 @@
             this.btnRunSQL.TabIndex = 2;
             this.btnRunSQL.Text = "Run SQL Commands";
             this.btnRunSQL.UseVisualStyleBackColor = true;
+            this.btnRunSQL.Click += new System.EventHandler(this.btnRunSQL_Click);
             // 
             // btnFarminData
             // 

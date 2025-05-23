@@ -43,12 +43,19 @@ namespace FarmingManagement_FMS.Forms
 
         private void pcFarm_Click(object sender, EventArgs e)
         {
-
+            Farms f = new Farms();
+            f.Show();
         }
 
         private void ManageFarmingData_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblFarm_Click(object sender, EventArgs e)
+        {
+            Farms f = new Farms();
+            f.Show();
         }
     }
 }

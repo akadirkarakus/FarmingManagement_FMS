@@ -17,7 +17,7 @@ namespace FarmingManagement_FMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Farms());
+            Application.Run(new AdminPanel());
 
             
             // DENEMELERİ HIZLANDIRMAK İÇİN İPTAL EDİLDİ. TEKRAR AÇILACAK!!!!

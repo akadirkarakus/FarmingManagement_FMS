@@ -23,7 +23,6 @@
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Storing_products" Width="1.5" PointX="6.875" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FarmingManagementSystemModel.Vet" Width="1.5" PointX="11" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Examinati__Anima__14270015" ManuallyRouted="false" />
-        <AssociationConnector Association="FarmingManagementSystemModel.FK__Vet__Animal_id__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Barn__Land_no__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Storing_p__Barn___00200768" ManuallyRouted="false" />
         <AssociationConnector Association="FarmingManagementSystemModel.FK__Equipment__Emp_i__787EE5A0" ManuallyRouted="false" />
