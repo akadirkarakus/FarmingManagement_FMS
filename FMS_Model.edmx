@@ -12,6 +12,8 @@
           <Property Name="Animal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Species" Type="varchar" MaxLength="50" />
           <Property Name="Birth_date" Type="date" />
+          <Property Name="Farm_No" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Barn">
           <Key>
@@ -19,17 +21,8 @@
           </Key>
           <Property Name="Barn_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Barn_name" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="Barn_location" Type="varchar" MaxLength="100" />
           <Property Name="Land_no" Type="int" Nullable="false" />
           <Property Name="Barn_acreage" Type="float" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Barn_product">
-          <Key>
-            <PropertyRef Name="Barn_no" />
-          </Key>
-          <Property Name="Barn_no" Type="int" Nullable="false" />
-          <Property Name="Product_name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Product_quantity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -70,7 +63,7 @@
           </Key>
           <Property Name="Storage_no" Type="int" Nullable="false" />
           <Property Name="Equi_id" Type="int" Nullable="false" />
-          <Property Name="Equi_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipment_Use">
           <Key>
@@ -99,9 +92,9 @@
           </Key>
           <Property Name="Farm_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Farm_name" Type="varchar" MaxLength="100" />
-          <Property Name="Location_farm" Type="varchar" MaxLength="100" />
           <Property Name="Farm_acreage" Type="float" Nullable="false" />
           <Property Name="Land_no" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Farm_Work">
           <Key>
@@ -110,14 +103,18 @@
           <Property Name="Work_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Farm_no" Type="int" Nullable="false" />
           <Property Name="Farm_WorkDone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Work_Date" Type="date" />
         </EntityType>
-        <EntityType Name="Farm_work_employee">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Farm_work_employee2">
           <Key>
             <PropertyRef Name="Work_id" />
             <PropertyRef Name="Emp_id" />
           </Key>
           <Property Name="Work_id" Type="int" Nullable="false" />
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="deneme" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Farm_work_location">
           <Key>
@@ -137,14 +134,6 @@
           <Property Name="Land_no" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Field_work_employees">
-          <Key>
-            <PropertyRef Name="Work_id" />
-            <PropertyRef Name="Emp_id" />
-          </Key>
-          <Property Name="Work_id" Type="int" Nullable="false" />
-          <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
         </EntityType>
         <EntityType Name="Field_work_employees2">
           <Key>
@@ -217,15 +206,15 @@
           <Property Name="Pesticide" Type="varchar" MaxLength="100" />
           <Property Name="Control_range" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
-        <EntityType Name="Storage_location">
+        <EntityType Name="Storage">
           <Key>
             <PropertyRef Name="Storage_no" />
           </Key>
           <Property Name="Storage_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Storage_location" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Storage_acreage" Type="float" Nullable="false" />
           <Property Name="Location_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Land_no" Type="int" Nullable="false" />
+          <Property Name="Storage_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Storing_products">
           <Key>
@@ -249,6 +238,18 @@
           <Property Name="Clinic_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Clinic_location" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Animal__Farm_No__3493CFA7">
+          <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="Farm_no" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Farm_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Barn__Land_no__440B1D61">
           <End Role="Land" Type="Self.Land" Multiplicity="1" />
           <End Role="Barn" Type="Self.Barn" Multiplicity="*" />
@@ -258,20 +259,6 @@
             </Principal>
             <Dependent Role="Barn">
               <PropertyRef Name="Land_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Barn_prod__Barn___47DBAE45">
-          <End Role="Barn" Type="Self.Barn" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Barn_product" Type="Self.Barn_product" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Barn">
-              <PropertyRef Name="Barn_no" />
-            </Principal>
-            <Dependent Role="Barn_product">
-              <PropertyRef Name="Barn_no" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -383,20 +370,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Farm_work__Emp_i__114A936A">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Farm_work_employee" Type="Self.Farm_work_employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="Emp_id" />
-            </Principal>
-            <Dependent Role="Farm_work_employee">
-              <PropertyRef Name="Emp_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Farm_Work__Farm___09A971A2">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -425,20 +398,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Farm_work__Work___10566F31">
-          <End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Farm_work_employee" Type="Self.Farm_work_employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Farm_Work">
-              <PropertyRef Name="Work_id" />
-            </Principal>
-            <Dependent Role="Farm_work_employee">
-              <PropertyRef Name="Work_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Field__Land_no__3C69FB99">
           <End Role="Land" Type="Self.Land" Multiplicity="1" />
           <End Role="Field" Type="Self.Field" Multiplicity="*" />
@@ -461,20 +420,6 @@
               <PropertyRef Name="Emp_id" />
             </Principal>
             <Dependent Role="Field_work_employees2">
-              <PropertyRef Name="Emp_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Field_wor__Emp_i__628FA481">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Field_work_employees" Type="Self.Field_work_employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="Emp_id" />
-            </Principal>
-            <Dependent Role="Field_work_employees">
               <PropertyRef Name="Emp_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -535,20 +480,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Field_wor__Work___619B8048">
-          <End Role="Field_works" Type="Self.Field_works" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Field_work_employees" Type="Self.Field_work_employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Field_works">
-              <PropertyRef Name="Work_id" />
-            </Principal>
-            <Dependent Role="Field_work_employees">
-              <PropertyRef Name="Work_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Managemen__Emp_i__208CD6FA">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -603,12 +534,12 @@
           <End Role="Land" Type="Self.Land" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Storage_location" Type="Self.Storage_location" Multiplicity="*" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Land">
               <PropertyRef Name="Land_no" />
             </Principal>
-            <Dependent Role="Storage_location">
+            <Dependent Role="Storage">
               <PropertyRef Name="Land_no" />
             </Dependent>
           </ReferentialConstraint>
@@ -682,7 +613,6 @@
         <EntityContainer Name="FarmingManagementSystemModelStoreContainer">
           <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barn" EntityType="Self.Barn" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Barn_product" EntityType="Self.Barn_product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee_Workspace" EntityType="Self.Employee_Workspace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
@@ -691,10 +621,8 @@
           <EntitySet Name="Examination" EntityType="Self.Examination" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Farm" EntityType="Self.Farm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Farm_Work" EntityType="Self.Farm_Work" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Farm_work_employee" EntityType="Self.Farm_work_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Farm_work_location" EntityType="Self.Farm_work_location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Field_work_employees" EntityType="Self.Field_work_employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_work_employees2" EntityType="Self.Field_work_employees2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_work_seeds3" EntityType="Self.Field_work_seeds3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_works" EntityType="Self.Field_works" Schema="dbo" store:Type="Tables" />
@@ -703,16 +631,23 @@
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seed" EntityType="Self.Seed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seed_Treatment" EntityType="Self.Seed_Treatment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Storage_location" EntityType="Self.Storage_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storing_products" EntityType="Self.Storing_products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vet" EntityType="Self.Vet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farm_work_employee2" EntityType="Self.Farm_work_employee2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Farm_work_employee2].[Work_id] AS [Work_id], 
+    [Farm_work_employee2].[Emp_id] AS [Emp_id], 
+    [Farm_work_employee2].[deneme] AS [deneme]
+    FROM [dbo].[Farm_work_employee2] AS [Farm_work_employee2]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Animal__Farm_No__3493CFA7" Association="Self.FK__Animal__Farm_No__3493CFA7">
+            <End Role="Farm" EntitySet="Farm" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
           <AssociationSet Name="FK__Barn__Land_no__440B1D61" Association="Self.FK__Barn__Land_no__440B1D61">
             <End Role="Land" EntitySet="Land" />
             <End Role="Barn" EntitySet="Barn" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Barn_prod__Barn___47DBAE45" Association="Self.FK__Barn_prod__Barn___47DBAE45">
-            <End Role="Barn" EntitySet="Barn" />
-            <End Role="Barn_product" EntitySet="Barn_product" />
           </AssociationSet>
           <AssociationSet Name="FK__Employee___Emp_i__74AE54BC" Association="Self.FK__Employee___Emp_i__74AE54BC">
             <End Role="Employee" EntitySet="Employee" />
@@ -746,10 +681,6 @@
             <End Role="Barn" EntitySet="Barn" />
             <End Role="Farm_work_location" EntitySet="Farm_work_location" />
           </AssociationSet>
-          <AssociationSet Name="FK__Farm_work__Emp_i__114A936A" Association="Self.FK__Farm_work__Emp_i__114A936A">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Farm_work_employee" EntitySet="Farm_work_employee" />
-          </AssociationSet>
           <AssociationSet Name="FK__Farm_Work__Farm___09A971A2" Association="Self.FK__Farm_Work__Farm___09A971A2">
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Farm_Work" EntitySet="Farm_Work" />
@@ -758,10 +689,6 @@
             <End Role="Farm_Work" EntitySet="Farm_Work" />
             <End Role="Farm_work_location" EntitySet="Farm_work_location" />
           </AssociationSet>
-          <AssociationSet Name="FK__Farm_work__Work___10566F31" Association="Self.FK__Farm_work__Work___10566F31">
-            <End Role="Farm_Work" EntitySet="Farm_Work" />
-            <End Role="Farm_work_employee" EntitySet="Farm_work_employee" />
-          </AssociationSet>
           <AssociationSet Name="FK__Field__Land_no__3C69FB99" Association="Self.FK__Field__Land_no__3C69FB99">
             <End Role="Land" EntitySet="Land" />
             <End Role="Field" EntitySet="Field" />
@@ -769,10 +696,6 @@
           <AssociationSet Name="FK__Field_wor__Emp_i__32AB8735" Association="Self.FK__Field_wor__Emp_i__32AB8735">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Field_work_employees2" EntitySet="Field_work_employees2" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Field_wor__Emp_i__628FA481" Association="Self.FK__Field_wor__Emp_i__628FA481">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Field_work_employees" EntitySet="Field_work_employees" />
           </AssociationSet>
           <AssociationSet Name="FK__Field_wor__Field__5AEE82B9" Association="Self.FK__Field_wor__Field__5AEE82B9">
             <End Role="Field" EntitySet="Field" />
@@ -789,10 +712,6 @@
           <AssociationSet Name="FK__Field_wor__Work___31B762FC" Association="Self.FK__Field_wor__Work___31B762FC">
             <End Role="Field_works" EntitySet="Field_works" />
             <End Role="Field_work_employees2" EntitySet="Field_work_employees2" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Field_wor__Work___619B8048" Association="Self.FK__Field_wor__Work___619B8048">
-            <End Role="Field_works" EntitySet="Field_works" />
-            <End Role="Field_work_employees" EntitySet="Field_work_employees" />
           </AssociationSet>
           <AssociationSet Name="FK__Managemen__Emp_i__208CD6FA" Association="Self.FK__Managemen__Emp_i__208CD6FA">
             <End Role="Employee" EntitySet="Employee" />
@@ -812,7 +731,7 @@
           </AssociationSet>
           <AssociationSet Name="FK__Storage_l__Land___05D8E0BE" Association="Self.FK__Storage_l__Land___05D8E0BE">
             <End Role="Land" EntitySet="Land" />
-            <End Role="Storage_location" EntitySet="Storage_location" />
+            <End Role="Storage" EntitySet="Storage" />
           </AssociationSet>
           <AssociationSet Name="FK__Storing_p__Barn___00200768" Association="Self.FK__Storing_p__Barn___00200768">
             <End Role="Barn" EntitySet="Barn" />
@@ -848,6 +767,9 @@
 					<Property Name="Birth_date" Type="DateTime" Precision="0" />
 					<NavigationProperty Name="Examinations" Relationship="Self.FK__Examinati__Anima__14270015" FromRole="Animal" ToRole="Examination" />
 					<NavigationProperty Name="Vets" Relationship="Self.FK__Vet__Animal_id__5812160E" FromRole="Animal" ToRole="Vet" />
+          <Property Name="Farm_No" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Farm" Relationship="FarmingManagementSystemModel.FK__Animal__Farm_No__3493CFA7" FromRole="Animal" ToRole="Farm" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
 				</EntityType>
 				<EntityType Name="Barn">
 					<Key>
@@ -855,22 +777,11 @@
 					</Key>
 					<Property Name="Barn_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
 					<Property Name="Barn_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Barn_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<Property Name="Land_no" Type="Int32" Nullable="false" />
 					<Property Name="Barn_acreage" Type="Double" Nullable="false" />
 					<NavigationProperty Name="Land" Relationship="Self.FK__Barn__Land_no__440B1D61" FromRole="Barn" ToRole="Land" />
-					<NavigationProperty Name="Barn_product" Relationship="Self.FK__Barn_prod__Barn___47DBAE45" FromRole="Barn" ToRole="Barn_product" />
 					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Barn___00200768" FromRole="Barn" ToRole="Storing_products" />
 					<NavigationProperty Name="Farm_Work" Relationship="Self.Farm_work_location" FromRole="Barn" ToRole="Farm_Work" />
-				</EntityType>
-				<EntityType Name="Barn_product">
-					<Key>
-						<PropertyRef Name="Barn_no" />
-					</Key>
-					<Property Name="Barn_no" Type="Int32" Nullable="false" />
-					<Property Name="Product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Product_quantity" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="Barn" Relationship="Self.FK__Barn_prod__Barn___47DBAE45" FromRole="Barn_product" ToRole="Barn" />
 				</EntityType>
 				<EntityType Name="Employee">
 					<Key>
@@ -889,8 +800,6 @@
 					<NavigationProperty Name="Equipment_Use" Relationship="Self.FK__Equipment__Emp_i__787EE5A0" FromRole="Employee" ToRole="Equipment_Use" />
 					<NavigationProperty Name="Notices" Relationship="Self.FK__Notice__Supervis__1AD3FDA4" FromRole="Employee" ToRole="Notice" />
 					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Emp_i__01142BA1" FromRole="Employee" ToRole="Storing_products" />
-					<NavigationProperty Name="Farm_Work" Relationship="Self.Farm_work_employee" FromRole="Employee" ToRole="Farm_Work" />
-					<NavigationProperty Name="Field_works" Relationship="Self.Field_work_employees" FromRole="Employee" ToRole="Field_works" />
 					<NavigationProperty Name="Employee1" Relationship="Self.Management" FromRole="Employee" ToRole="Employee1" />
 					<NavigationProperty Name="Employees" Relationship="Self.Management" FromRole="Employee1" ToRole="Employee" />
 					<NavigationProperty Name="Employee_Workspace" Relationship="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" FromRole="Employee" ToRole="Employee_Workspace" />
@@ -912,8 +821,8 @@
 					</Key>
 					<Property Name="Storage_no" Type="Int32" Nullable="false" />
 					<Property Name="Equi_id" Type="Int32" Nullable="false" />
-					<Property Name="Equi_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
 					<NavigationProperty Name="Equipment" Relationship="Self.FK__Equipment__Equi___17F790F9" FromRole="Equipment_Storage" ToRole="Equipment" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
 				</EntityType>
 				<EntityType Name="Equipment_Use">
 					<Key>
@@ -946,12 +855,13 @@
 					</Key>
 					<Property Name="Farm_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
 					<Property Name="Farm_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-					<Property Name="Location_farm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<Property Name="Farm_acreage" Type="Double" Nullable="false" />
 					<Property Name="Land_no" Type="Int32" Nullable="false" />
 					<NavigationProperty Name="Land" Relationship="Self.FK__Farm__Land_no__4BAC3F29" FromRole="Farm" ToRole="Land" />
 					<NavigationProperty Name="Farm_Work" Relationship="Self.FK__Farm_Work__Farm___09A971A2" FromRole="Farm" ToRole="Farm_Work" />
 					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Farm___7F2BE32F" FromRole="Farm" ToRole="Storing_products" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Animals" Relationship="FarmingManagementSystemModel.FK__Animal__Farm_No__3493CFA7" FromRole="Farm" ToRole="Animal" />
 				</EntityType>
 				<EntityType Name="Farm_Work">
 					<Key>
@@ -961,8 +871,8 @@
 					<Property Name="Farm_no" Type="Int32" Nullable="false" />
 					<Property Name="Farm_WorkDone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
 					<NavigationProperty Name="Farm" Relationship="Self.FK__Farm_Work__Farm___09A971A2" FromRole="Farm_Work" ToRole="Farm" />
-					<NavigationProperty Name="Employees" Relationship="Self.Farm_work_employee" FromRole="Farm_Work" ToRole="Employee" />
 					<NavigationProperty Name="Barns" Relationship="Self.Farm_work_location" FromRole="Farm_Work" ToRole="Barn" />
+          <Property Name="Work_Date" Type="DateTime" Precision="0" />
 				</EntityType>
 				<EntityType Name="Field">
 					<Key>
@@ -986,7 +896,6 @@
 					<Property Name="Field_no" Type="Int32" Nullable="false" />
 					<Property Name="Field_WorkDone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<NavigationProperty Name="Field" Relationship="Self.FK__Field_wor__Field__5AEE82B9" FromRole="Field_works" ToRole="Field" />
-					<NavigationProperty Name="Employees" Relationship="Self.Field_work_employees" FromRole="Field_works" ToRole="Employee" />
           <NavigationProperty Name="Field_work_seeds3" Relationship="FarmingManagementSystemModel.FK__Field_wor__Work___2DE6D218" FromRole="Field_works" ToRole="Field_work_seeds3" />
           <Property Name="Work_Date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Field_work_employees2" Relationship="FarmingManagementSystemModel.FK__Field_wor__Work___31B762FC" FromRole="Field_works" ToRole="Field_work_employees2" />
@@ -1003,9 +912,9 @@
 					<NavigationProperty Name="Barns" Relationship="Self.FK__Barn__Land_no__440B1D61" FromRole="Land" ToRole="Barn" />
 					<NavigationProperty Name="Farms" Relationship="Self.FK__Farm__Land_no__4BAC3F29" FromRole="Land" ToRole="Farm" />
 					<NavigationProperty Name="Fields" Relationship="Self.FK__Field__Land_no__3C69FB99" FromRole="Land" ToRole="Field" />
-					<NavigationProperty Name="Storage_location" Relationship="Self.FK__Storage_l__Land___05D8E0BE" FromRole="Land" ToRole="Storage_location" />
 					<Property Name="Status" Type="Boolean" Nullable="false" />
 					<Property Name="Land_City" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Storages" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1" FromRole="Land" ToRole="Storage" />
 				</EntityType>
 				<EntityType Name="Notice">
 					<Key>
@@ -1022,7 +931,7 @@
 						<PropertyRef Name="Seed_genus" />
 					</Key>
 					<Property Name="Seed_genus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Seed_date" Type="String" />
+					<Property Name="Seed_date" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
 					<Property Name="Cultivation_time" Type="Double" />
 					<NavigationProperty Name="Seed_Treatment" Relationship="Self.FK__Seed_Trea__Seed___534D60F1" FromRole="Seed" ToRole="Seed_Treatment" />
           <NavigationProperty Name="Field_work_seeds3" Relationship="FarmingManagementSystemModel.FK__Field_wor__Seed___2EDAF651" FromRole="Seed" ToRole="Field_work_seeds3" />
@@ -1035,17 +944,6 @@
 					<Property Name="Pesticide" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<Property Name="Control_range" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
 					<NavigationProperty Name="Seed" Relationship="Self.FK__Seed_Trea__Seed___534D60F1" FromRole="Seed_Treatment" ToRole="Seed" />
-				</EntityType>
-				<EntityType Name="Storage_location">
-					<Key>
-						<PropertyRef Name="Storage_no" />
-					</Key>
-					<Property Name="Storage_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="Storage_location1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Storage_acreage" Type="Double" Nullable="false" />
-					<Property Name="Location_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Land_no" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="Land" Relationship="Self.FK__Storage_l__Land___05D8E0BE" FromRole="Storage_location" ToRole="Land" />
 				</EntityType>
 				<EntityType Name="Storing_products">
 					<Key>
@@ -1112,20 +1010,6 @@
 						</Principal>
 						<Dependent Role="Barn">
 							<PropertyRef Name="Land_no" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Barn_prod__Barn___47DBAE45">
-					<End Role="Barn" Type="Self.Barn" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Barn_product" Type="Self.Barn_product" Multiplicity="0..1" />
-					<ReferentialConstraint>
-						<Principal Role="Barn">
-							<PropertyRef Name="Barn_no" />
-						</Principal>
-						<Dependent Role="Barn_product">
-							<PropertyRef Name="Barn_no" />
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
@@ -1299,20 +1183,6 @@
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="FK__Storage_l__Land___05D8E0BE">
-					<End Role="Land" Type="Self.Land" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Storage_location" Type="Self.Storage_location" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Land">
-							<PropertyRef Name="Land_no" />
-						</Principal>
-						<Dependent Role="Storage_location">
-							<PropertyRef Name="Land_no" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
 				<Association Name="FK__Seed_Trea__Seed___534D60F1">
 					<End Role="Seed" Type="Self.Seed" Multiplicity="1" />
 					<End Role="Seed_Treatment" Type="Self.Seed_Treatment" Multiplicity="0..1" />
@@ -1325,17 +1195,9 @@
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="Farm_work_employee">
-					<End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-					<End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="*" />
-				</Association>
 				<Association Name="Farm_work_location">
 					<End Role="Barn" Type="Self.Barn" Multiplicity="*" />
 					<End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="*" />
-				</Association>
-				<Association Name="Field_work_employees">
-					<End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-					<End Role="Field_works" Type="Self.Field_works" Multiplicity="*" />
 				</Association>
 				<Association Name="Management">
 					<End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -1344,7 +1206,6 @@
 				<EntityContainer Name="FarmingManagementSystemEntities" annotation:LazyLoadingEnabled="true">
 					<EntitySet Name="Animals" EntityType="Self.Animal" />
 					<EntitySet Name="Barns" EntityType="Self.Barn" />
-					<EntitySet Name="Barn_product" EntityType="Self.Barn_product" />
 					<EntitySet Name="Employees" EntityType="Self.Employee" />
 					<EntitySet Name="Equipments" EntityType="Self.Equipment" />
 					<EntitySet Name="Equipment_Storage" EntityType="Self.Equipment_Storage" />
@@ -1358,7 +1219,6 @@
 					<EntitySet Name="Notices" EntityType="Self.Notice" />
 					<EntitySet Name="Seeds" EntityType="Self.Seed" />
 					<EntitySet Name="Seed_Treatment" EntityType="Self.Seed_Treatment" />
-					<EntitySet Name="Storage_location" EntityType="Self.Storage_location" />
 					<EntitySet Name="Storing_products" EntityType="Self.Storing_products" />
 					<EntitySet Name="Vets" EntityType="Self.Vet" />
 					<AssociationSet Name="FK__Examinati__Anima__14270015" Association="Self.FK__Examinati__Anima__14270015">
@@ -1372,10 +1232,6 @@
 					<AssociationSet Name="FK__Barn__Land_no__440B1D61" Association="Self.FK__Barn__Land_no__440B1D61">
 						<End Role="Land" EntitySet="Lands" />
 						<End Role="Barn" EntitySet="Barns" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Barn_prod__Barn___47DBAE45" Association="Self.FK__Barn_prod__Barn___47DBAE45">
-						<End Role="Barn" EntitySet="Barns" />
-						<End Role="Barn_product" EntitySet="Barn_product" />
 					</AssociationSet>
 					<AssociationSet Name="FK__Storing_p__Barn___00200768" Association="Self.FK__Storing_p__Barn___00200768">
 						<End Role="Barn" EntitySet="Barns" />
@@ -1429,25 +1285,13 @@
 						<End Role="Field" EntitySet="Fields" />
 						<End Role="Storing_products" EntitySet="Storing_products" />
 					</AssociationSet>
-					<AssociationSet Name="FK__Storage_l__Land___05D8E0BE" Association="Self.FK__Storage_l__Land___05D8E0BE">
-						<End Role="Land" EntitySet="Lands" />
-						<End Role="Storage_location" EntitySet="Storage_location" />
-					</AssociationSet>
 					<AssociationSet Name="FK__Seed_Trea__Seed___534D60F1" Association="Self.FK__Seed_Trea__Seed___534D60F1">
 						<End Role="Seed" EntitySet="Seeds" />
 						<End Role="Seed_Treatment" EntitySet="Seed_Treatment" />
 					</AssociationSet>
-					<AssociationSet Name="Farm_work_employee" Association="Self.Farm_work_employee">
-						<End Role="Employee" EntitySet="Employees" />
-						<End Role="Farm_Work" EntitySet="Farm_Work" />
-					</AssociationSet>
 					<AssociationSet Name="Farm_work_location" Association="Self.Farm_work_location">
 						<End Role="Barn" EntitySet="Barns" />
 						<End Role="Farm_Work" EntitySet="Farm_Work" />
-					</AssociationSet>
-					<AssociationSet Name="Field_work_employees" Association="Self.Field_work_employees">
-						<End Role="Employee" EntitySet="Employees" />
-						<End Role="Field_works" EntitySet="Field_works" />
 					</AssociationSet>
 					<AssociationSet Name="Management" Association="Self.Management">
 						<End Role="Employee" EntitySet="Employees" />
@@ -1475,6 +1319,16 @@
           <AssociationSet Name="FK__Field_wor__Work___31B762FC" Association="FarmingManagementSystemModel.FK__Field_wor__Work___31B762FC">
             <End Role="Field_works" EntitySet="Field_works" />
             <End Role="Field_work_employees2" EntitySet="Field_work_employees2" />
+          </AssociationSet>
+          <EntitySet Name="Farm_work_employee2" EntityType="FarmingManagementSystemModel.Farm_work_employee2" />
+          <AssociationSet Name="FK__Animal__Farm_No__3493CFA7" Association="FarmingManagementSystemModel.FK__Animal__Farm_No__3493CFA7">
+            <End Role="Farm" EntitySet="Farms" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
+          <EntitySet Name="Storages" EntityType="FarmingManagementSystemModel.Storage" />
+          <AssociationSet Name="FK__Storage_l__Land___05D8E0BE1" Association="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1">
+            <End Role="Land" EntitySet="Lands" />
+            <End Role="Storage" EntitySet="Storages" />
           </AssociationSet>
 				</EntityContainer>
 				<EntityType Name="Employee_Workspace">
@@ -1580,6 +1434,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Farm_work_employee2">
+          <Key>
+            <PropertyRef Name="Work_id" />
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Work_id" Type="Int32" Nullable="false" />
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="deneme" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Animal__Farm_No__3493CFA7">
+          <End Type="FarmingManagementSystemModel.Farm" Role="Farm" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Animal" Role="Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="Farm_no" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Farm_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="Storage_no" />
+          </Key>
+          <Property Name="Storage_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Storage_acreage" Type="Double" Nullable="false" />
+          <Property Name="Location_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Land_no" Type="Int32" Nullable="false" />
+          <Property Name="Storage_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Land" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1" FromRole="Storage" ToRole="Land" />
+        </EntityType>
+        <Association Name="FK__Storage_l__Land___05D8E0BE1">
+          <End Type="FarmingManagementSystemModel.Land" Role="Land" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FarmingManagementSystemModel.Storage" Role="Storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Land">
+              <PropertyRef Name="Land_no" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="Land_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
 			</Schema>
 		</edmx:ConceptualModels>
 		<!-- C-S mapping content -->
@@ -1589,7 +1489,9 @@
 					<EntitySetMapping Name="Animals">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Animal">
 							<MappingFragment StoreEntitySet="Animal">
-								<ScalarProperty Name="Animal_id" ColumnName="Animal_id" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Farm_No" ColumnName="Farm_No" />
+                <ScalarProperty Name="Animal_id" ColumnName="Animal_id" />
 								<ScalarProperty Name="Species" ColumnName="Species" />
 								<ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
 							</MappingFragment>
@@ -1600,18 +1502,8 @@
 							<MappingFragment StoreEntitySet="Barn">
 								<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
 								<ScalarProperty Name="Barn_name" ColumnName="Barn_name" />
-								<ScalarProperty Name="Barn_location" ColumnName="Barn_location" />
 								<ScalarProperty Name="Land_no" ColumnName="Land_no" />
 								<ScalarProperty Name="Barn_acreage" ColumnName="Barn_acreage" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="Barn_product">
-						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Barn_product">
-							<MappingFragment StoreEntitySet="Barn_product">
-								<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
-								<ScalarProperty Name="Product_name" ColumnName="Product_name" />
-								<ScalarProperty Name="Product_quantity" ColumnName="Product_quantity" />
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
@@ -1643,9 +1535,9 @@
 					<EntitySetMapping Name="Equipment_Storage">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Equipment_Storage">
 							<MappingFragment StoreEntitySet="Equipment_Storage">
-								<ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
 								<ScalarProperty Name="Equi_id" ColumnName="Equi_id" />
-								<ScalarProperty Name="Equi_name" ColumnName="Equi_name" />
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
@@ -1674,9 +1566,9 @@
 					<EntitySetMapping Name="Farms">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Farm">
 							<MappingFragment StoreEntitySet="Farm">
-								<ScalarProperty Name="Farm_no" ColumnName="Farm_no" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Farm_no" ColumnName="Farm_no" />
 								<ScalarProperty Name="Farm_name" ColumnName="Farm_name" />
-								<ScalarProperty Name="Location_farm" ColumnName="Location_farm" />
 								<ScalarProperty Name="Farm_acreage" ColumnName="Farm_acreage" />
 								<ScalarProperty Name="Land_no" ColumnName="Land_no" />
 							</MappingFragment>
@@ -1685,7 +1577,8 @@
 					<EntitySetMapping Name="Farm_Work">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Farm_Work">
 							<MappingFragment StoreEntitySet="Farm_Work">
-								<ScalarProperty Name="Work_id" ColumnName="Work_id" />
+								<ScalarProperty Name="Work_Date" ColumnName="Work_Date" />
+                <ScalarProperty Name="Work_id" ColumnName="Work_id" />
 								<ScalarProperty Name="Farm_no" ColumnName="Farm_no" />
 								<ScalarProperty Name="Farm_WorkDone" ColumnName="Farm_WorkDone" />
 							</MappingFragment>
@@ -1754,17 +1647,6 @@
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
-					<EntitySetMapping Name="Storage_location">
-						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Storage_location">
-							<MappingFragment StoreEntitySet="Storage_location">
-								<ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
-								<ScalarProperty Name="Storage_location1" ColumnName="Storage_location" />
-								<ScalarProperty Name="Storage_acreage" ColumnName="Storage_acreage" />
-								<ScalarProperty Name="Location_name" ColumnName="Location_name" />
-								<ScalarProperty Name="Land_no" ColumnName="Land_no" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
 					<EntitySetMapping Name="Storing_products">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Storing_products">
 							<MappingFragment StoreEntitySet="Storing_products">
@@ -1789,27 +1671,11 @@
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
-					<AssociationSetMapping Name="Farm_work_employee" TypeName="FarmingManagementSystemModel.Farm_work_employee" StoreEntitySet="Farm_work_employee">
-						<EndProperty Name="Employee">
-							<ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
-						</EndProperty>
-						<EndProperty Name="Farm_Work">
-							<ScalarProperty Name="Work_id" ColumnName="Work_id" />
-						</EndProperty>
-					</AssociationSetMapping>
 					<AssociationSetMapping Name="Farm_work_location" TypeName="FarmingManagementSystemModel.Farm_work_location" StoreEntitySet="Farm_work_location">
 						<EndProperty Name="Barn">
 							<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
 						</EndProperty>
 						<EndProperty Name="Farm_Work">
-							<ScalarProperty Name="Work_id" ColumnName="Work_id" />
-						</EndProperty>
-					</AssociationSetMapping>
-					<AssociationSetMapping Name="Field_work_employees" TypeName="FarmingManagementSystemModel.Field_work_employees" StoreEntitySet="Field_work_employees">
-						<EndProperty Name="Employee">
-							<ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
-						</EndProperty>
-						<EndProperty Name="Field_works">
 							<ScalarProperty Name="Work_id" ColumnName="Work_id" />
 						</EndProperty>
 					</AssociationSetMapping>
@@ -1847,6 +1713,26 @@
                 <ScalarProperty Name="deneme" ColumnName="deneme" />
                 <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
                 <ScalarProperty Name="Work_id" ColumnName="Work_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Farm_work_employee2">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Farm_work_employee2">
+              <MappingFragment StoreEntitySet="Farm_work_employee2">
+                <ScalarProperty Name="deneme" ColumnName="deneme" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Work_id" ColumnName="Work_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="Storage_Name" ColumnName="Storage_Name" />
+                <ScalarProperty Name="Land_no" ColumnName="Land_no" />
+                <ScalarProperty Name="Location_name" ColumnName="Location_name" />
+                <ScalarProperty Name="Storage_acreage" ColumnName="Storage_acreage" />
+                <ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

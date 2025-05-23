@@ -19,18 +19,21 @@ namespace FarmingManagement_FMS
         {
             this.Farm_Work = new HashSet<Farm_Work>();
             this.Storing_products = new HashSet<Storing_products>();
+            this.Animals = new HashSet<Animal>();
         }
     
         public int Farm_no { get; set; }
         public string Farm_name { get; set; }
-        public string Location_farm { get; set; }
         public double Farm_acreage { get; set; }
         public int Land_no { get; set; }
+        public bool Status { get; set; }
     
         public virtual Land Land { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Farm_Work> Farm_Work { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storing_products> Storing_products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Animal> Animals { get; set; }
     }
 }

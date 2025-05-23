@@ -22,12 +22,10 @@ namespace FarmingManagement_FMS
     
         public int Barn_no { get; set; }
         public string Barn_name { get; set; }
-        public string Barn_location { get; set; }
         public int Land_no { get; set; }
         public double Barn_acreage { get; set; }
     
         public virtual Land Land { get; set; }
-        public virtual Barn_product Barn_product { get; set; }
         public virtual Storing_products Storing_products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Farm_Work> Farm_Work { get; set; }

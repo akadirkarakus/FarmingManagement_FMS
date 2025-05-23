@@ -34,8 +34,12 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPlantDate = new System.Windows.Forms.TextBox();
             this.btnSeed = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtLandNo = new System.Windows.Forms.TextBox();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnWork = new System.Windows.Forms.Button();
@@ -51,10 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pcField = new System.Windows.Forms.PictureBox();
-            this.txtPlantDate = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -140,6 +140,30 @@
             this.panel1.Size = new System.Drawing.Size(987, 335);
             this.panel1.TabIndex = 37;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(345, 275);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(228, 45);
+            this.textBox1.TabIndex = 48;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label8.Location = new System.Drawing.Point(202, 273);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 40);
+            this.label8.TabIndex = 47;
+            this.label8.Text = "Seed Genus:";
+            // 
+            // txtPlantDate
+            // 
+            this.txtPlantDate.Location = new System.Drawing.Point(345, 224);
+            this.txtPlantDate.Name = "txtPlantDate";
+            this.txtPlantDate.Size = new System.Drawing.Size(228, 45);
+            this.txtPlantDate.TabIndex = 46;
+            // 
             // btnSeed
             // 
             this.btnSeed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -163,6 +187,17 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label4.Location = new System.Drawing.Point(188, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(151, 40);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Planting Date:";
             // 
             // txtLandNo
             // 
@@ -320,40 +355,6 @@
             this.pcField.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcField.TabIndex = 41;
             this.pcField.TabStop = false;
-            // 
-            // txtPlantDate
-            // 
-            this.txtPlantDate.Location = new System.Drawing.Point(345, 224);
-            this.txtPlantDate.Name = "txtPlantDate";
-            this.txtPlantDate.Size = new System.Drawing.Size(228, 45);
-            this.txtPlantDate.TabIndex = 46;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(188, 227);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 40);
-            this.label4.TabIndex = 45;
-            this.label4.Text = "Planting Date:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(345, 275);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 45);
-            this.textBox1.TabIndex = 48;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(202, 273);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 40);
-            this.label8.TabIndex = 47;
-            this.label8.Text = "Seed Genus:";
             // 
             // Fields
             // 

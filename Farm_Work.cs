@@ -17,17 +17,15 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Farm_Work()
         {
-            this.Employees = new HashSet<Employee>();
             this.Barns = new HashSet<Barn>();
         }
     
         public int Work_id { get; set; }
         public int Farm_no { get; set; }
         public string Farm_WorkDone { get; set; }
+        public Nullable<System.DateTime> Work_Date { get; set; }
     
         public virtual Farm Farm { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Barn> Barns { get; set; }
     }

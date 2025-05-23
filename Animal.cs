@@ -24,10 +24,13 @@ namespace FarmingManagement_FMS
         public int Animal_id { get; set; }
         public string Species { get; set; }
         public Nullable<System.DateTime> Birth_date { get; set; }
+        public int Farm_No { get; set; }
+        public bool Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vet> Vets { get; set; }
+        public virtual Farm Farm { get; set; }
     }
 }

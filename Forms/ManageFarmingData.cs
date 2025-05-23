@@ -40,5 +40,15 @@ namespace FarmingManagement_FMS.Forms
             ManageLand land = new ManageLand();
             land.Show();
         }
+
+        private void pcFarm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManageFarmingData_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

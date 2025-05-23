@@ -16,7 +16,7 @@ namespace FarmingManagement_FMS
     {
         public int Storage_no { get; set; }
         public int Equi_id { get; set; }
-        public string Equi_name { get; set; }
+        public bool Status { get; set; }
     
         public virtual Equipment Equipment { get; set; }
     }

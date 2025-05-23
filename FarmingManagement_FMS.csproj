@@ -62,11 +62,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Farm_work_employee2.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Field_work_employees2.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Field_work_seeds3.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AnimalsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AnimalsForm.Designer.cs">
+      <DependentUpon>AnimalsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Announcement.cs">
       <SubType>Form</SubType>
@@ -90,9 +99,6 @@
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Barn.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Barn_product.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
@@ -140,11 +146,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FMS_Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BarnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BarnForm.Designer.cs">
+      <DependentUpon>BarnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EquipmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EquipmentsForm.Designer.cs">
+      <DependentUpon>EquipmentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Farms.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Farms.Designer.cs">
       <DependentUpon>Farms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Farm_Works.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Farm_Works.Designer.cs">
+      <DependentUpon>Farm_Works.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Fields.cs">
       <SubType>Form</SubType>
@@ -194,11 +218,23 @@
     <Compile Include="Forms\PersonnelStart.Designer.cs">
       <DependentUpon>PersonnelStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductsForm.Designer.cs">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SeedInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SeedInfo.Designer.cs">
       <DependentUpon>SeedInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StorageForm.Designer.cs">
+      <DependentUpon>StorageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Land.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
@@ -214,7 +250,7 @@
     <Compile Include="Seed_Treatment.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Storage_location.cs">
+    <Compile Include="Storage.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Storing_products.cs">
@@ -223,6 +259,9 @@
     <Compile Include="Vet.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AnimalsForm.resx">
+      <DependentUpon>AnimalsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Announcement.resx">
       <DependentUpon>Announcement.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,8 +271,17 @@
     <EmbeddedResource Include="Forms\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BarnForm.resx">
+      <DependentUpon>BarnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EquipmentsForm.resx">
+      <DependentUpon>EquipmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Farms.resx">
       <DependentUpon>Farms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Farm_Works.resx">
+      <DependentUpon>Farm_Works.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Fields.resx">
       <DependentUpon>Fields.cs</DependentUpon>
@@ -259,8 +307,14 @@
     <EmbeddedResource Include="Forms\PersonnelStart.resx">
       <DependentUpon>PersonnelStart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductsForm.resx">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SeedInfo.resx">
       <DependentUpon>SeedInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StorageForm.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

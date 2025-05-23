@@ -20,8 +20,6 @@ namespace FarmingManagement_FMS
             this.Equipment_Use = new HashSet<Equipment_Use>();
             this.Notices = new HashSet<Notice>();
             this.Storing_products = new HashSet<Storing_products>();
-            this.Farm_Work = new HashSet<Farm_Work>();
-            this.Field_works = new HashSet<Field_works>();
             this.Employees = new HashSet<Employee>();
             this.Field_work_employees2 = new HashSet<Field_work_employees2>();
         }
@@ -44,10 +42,6 @@ namespace FarmingManagement_FMS
         public virtual ICollection<Notice> Notices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storing_products> Storing_products { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Farm_Work> Farm_Work { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Field_works> Field_works { get; set; }
         public virtual Employee Employee1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

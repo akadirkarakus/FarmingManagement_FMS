@@ -112,6 +112,7 @@ namespace FarmingManagement_FMS.Forms
                         Field_WorkDone = comboBox1.Text,
                         Work_Date = workDate
                     };
+
                     db.Field_works.Add(few);
                     db.SaveChanges();
                     int workID = few.Work_id;
@@ -169,7 +170,7 @@ namespace FarmingManagement_FMS.Forms
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                 txtFieldNo.Text = row.Cells["Field_no"].Value.ToString();
-                txtWorkDate.Text = Convert.ToDateTime(row.Cells["Work_Date"].Value).ToString("yyyy.MM.dd");
+                txtWorkDate.Text = DateTime.Parse(row.Cells["Work_Date"].Value.ToString()).ToString("yyyy.MM.dd");
                 txtEmpID.Text = row.Cells["Emp_id"].Value.ToString();
                 comboBox1.Text = row.Cells["Field_WorkDone"].Value.ToString();
                 cmbSeed.Text = row.Cells["Seed_Genus"].Value.ToString();

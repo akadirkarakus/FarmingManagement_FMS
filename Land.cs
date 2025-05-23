@@ -20,7 +20,7 @@ namespace FarmingManagement_FMS
             this.Barns = new HashSet<Barn>();
             this.Farms = new HashSet<Farm>();
             this.Fields = new HashSet<Field>();
-            this.Storage_location = new HashSet<Storage_location>();
+            this.Storages = new HashSet<Storage>();
         }
     
         public int Land_no { get; set; }
@@ -38,6 +38,6 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Field> Fields { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storage_location> Storage_location { get; set; }
+        public virtual ICollection<Storage> Storages { get; set; }
     }
 }
