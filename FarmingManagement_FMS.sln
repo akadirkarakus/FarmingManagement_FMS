@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmingManagement_FMS", "FarmingManagement_FMS.csproj", "{C9F174C3-EDF2-4043-BCEE-4BC9D207A25E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FMS_Setup", "..\FMS_Setup\FMS_Setup.vdproj", "{FD7A0349-3C78-73F4-A098-DD7F9D6EB53D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{C9F174C3-EDF2-4043-BCEE-4BC9D207A25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9F174C3-EDF2-4043-BCEE-4BC9D207A25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9F174C3-EDF2-4043-BCEE-4BC9D207A25E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7A0349-3C78-73F4-A098-DD7F9D6EB53D}.Debug|Any CPU.ActiveCfg = Debug
+		{FD7A0349-3C78-73F4-A098-DD7F9D6EB53D}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
