@@ -10,12 +10,7 @@ PASSWORDS:
 
 
 
-SUGGESTED ACCOUNTS:
+SUGGESTED ACCOUNT:
 -Admin: 12345678910
 password: 123456
-s
--Personnel(Field,Farm) ID: 10045206005
-password: 123456
 
--Personnel(Barn, Storage) ID: 10045206006	
-password: 123456
