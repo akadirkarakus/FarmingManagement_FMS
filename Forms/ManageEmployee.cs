@@ -124,7 +124,8 @@ namespace FarmingManagement_FMS.Forms
                 {
                     String id = txtID.Text.Trim();
                     var employee = db.Employees.FirstOrDefault(emp => emp.Emp_id == id);
-                    if(employee == null)
+                    String pass = PasswordGenerate(txtLname.Text.Trim(), id);
+                    if (employee == null)
                     {
                         bDate = DateTime.ParseExact(txtBdate.Text.Trim(), "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None);
                         Employee newEmp = new Employee()
@@ -138,7 +139,7 @@ namespace FarmingManagement_FMS.Forms
                             Status = true,
                             Birth_date = bDate,
                             phoneNumber = txtPhone.Text.Trim(),
-                            Password = PasswordGenerate(txtLname.Text.Trim(),id)
+                            Password = pass
                         };
 
                         Employee_Workspace ws = new Employee_Workspace

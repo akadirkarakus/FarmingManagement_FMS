@@ -290,8 +290,7 @@ namespace FarmingManagement_FMS.Forms
 
         private void btnWork_Click(object sender, EventArgs e)
         {
-            Field_Work fw = new Field_Work();
-            fw.allValue = true;
+            Field_Work fw = new Field_Work(-1);
             fw.Show();
         }
 
@@ -325,8 +324,7 @@ namespace FarmingManagement_FMS.Forms
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                     fieldNo = Int32.Parse(row.Cells["Field_no"].Value.ToString());
-                    Field_Work fw = new Field_Work();
-                    fw.allValue = false;
+                    Field_Work fw = new Field_Work(fieldNo);
                     fw.Show();
                 }
             }
@@ -335,6 +333,17 @@ namespace FarmingManagement_FMS.Forms
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLand_Click(object sender, EventArgs e)
+        {
+            ManageLand l = new ManageLand();
+            l.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

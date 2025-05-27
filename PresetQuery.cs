@@ -12,12 +12,12 @@ namespace FarmingManagement_FMS
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment_Storage
+    public partial class PresetQuery
     {
-        public int Storage_no { get; set; }
-        public int Equi_id { get; set; }
+        public int query_id { get; set; }
+        public string query_name { get; set; }
+        public string query_description { get; set; }
+        public string SQL_statement { get; set; }
         public bool Status { get; set; }
-    
-        public virtual Equipment Equipment { get; set; }
     }
 }

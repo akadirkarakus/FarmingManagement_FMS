@@ -12,20 +12,13 @@ namespace FarmingManagement_FMS
     using System;
     using System.Collections.Generic;
     
-    public partial class Storing_products
+    public partial class Storage_work_employee
     {
-        public int Barn_no { get; set; }
-        public string Emp_id { get; set; }
-        public string Stored_product { get; set; }
-        public int Stored_quantity { get; set; }
-        public System.DateTime Stored_date { get; set; }
-        public Nullable<int> Field_no { get; set; }
-        public Nullable<int> Farm_no { get; set; }
-        public int Storing_id { get; set; }
+        public string emp_id { get; set; }
+        public int Storage_no { get; set; }
+        public string nullValue { get; set; }
     
-        public virtual Barn Barn { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Farm Farm { get; set; }
-        public virtual Field Field { get; set; }
+        public virtual Storage Storage { get; set; }
     }
 }

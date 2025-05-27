@@ -19,9 +19,14 @@ namespace FarmingManagement_FMS
         {
             this.Equipment_Use = new HashSet<Equipment_Use>();
             this.Notices = new HashSet<Notice>();
-            this.Storing_products = new HashSet<Storing_products>();
-            this.Employees = new HashSet<Employee>();
             this.Field_work_employees2 = new HashSet<Field_work_employees2>();
+            this.Storing_products = new HashSet<Storing_products>();
+            this.Farm_work_employee2 = new HashSet<Farm_work_employee2>();
+            this.Management3 = new HashSet<Management3>();
+            this.Management31 = new HashSet<Management3>();
+            this.Managements = new HashSet<Management>();
+            this.Managements1 = new HashSet<Management>();
+            this.Storage_work_employee = new HashSet<Storage_work_employee>();
         }
     
         public string Emp_id { get; set; }
@@ -40,13 +45,22 @@ namespace FarmingManagement_FMS
         public virtual ICollection<Equipment_Use> Equipment_Use { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notice> Notices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storing_products> Storing_products { get; set; }
-        public virtual Employee Employee1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
         public virtual Employee_Workspace Employee_Workspace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Field_work_employees2> Field_work_employees2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Storing_products> Storing_products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Farm_work_employee2> Farm_work_employee2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management3> Management3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management3> Management31 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management> Managements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management> Managements1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Storage_work_employee> Storage_work_employee { get; set; }
     }
 }

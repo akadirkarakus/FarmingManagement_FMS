@@ -16,7 +16,7 @@ namespace FarmingManagement_FMS
     {
         public string Emp_id { get; set; }
         public int Equi_id { get; set; }
-        public System.DateTime Date_receive { get; set; }
+        public Nullable<System.DateTime> Date_receive { get; set; }
         public Nullable<System.DateTime> Date_return { get; set; }
     
         public virtual Employee Employee { get; set; }

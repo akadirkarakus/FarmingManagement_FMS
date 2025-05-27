@@ -17,5 +17,8 @@ namespace FarmingManagement_FMS
         public int Work_id { get; set; }
         public string Emp_id { get; set; }
         public string deneme { get; set; }
+    
+        public virtual Employee Employee { get; set; }
+        public virtual Farm_Work Farm_Work { get; set; }
     }
 }

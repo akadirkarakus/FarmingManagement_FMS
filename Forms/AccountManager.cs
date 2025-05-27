@@ -95,10 +95,11 @@ namespace FarmingManagement_FMS
                 {
                     if(Confirm() == true)
                     {
+                        var emp = db.Employees.FirstOrDefault(f => f.Emp_id == txtID.Text.Trim());
                         String newPassword = HashPassword(txtNewPass.Text.Trim());
-                        if(employee != null)
+                        if(emp != null)
                         {
-                            employee.Password = newPassword;
+                            emp.Password = newPassword;
                             db.SaveChanges();
                             MessageBox.Show("Your password updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }

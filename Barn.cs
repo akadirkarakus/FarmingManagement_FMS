@@ -17,17 +17,17 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Barn()
         {
-            this.Farm_Work = new HashSet<Farm_Work>();
+            this.Storing_products = new HashSet<Storing_products>();
         }
     
         public int Barn_no { get; set; }
         public string Barn_name { get; set; }
         public int Land_no { get; set; }
         public double Barn_acreage { get; set; }
+        public bool Status { get; set; }
     
         public virtual Land Land { get; set; }
-        public virtual Storing_products Storing_products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Farm_Work> Farm_Work { get; set; }
+        public virtual ICollection<Storing_products> Storing_products { get; set; }
     }
 }

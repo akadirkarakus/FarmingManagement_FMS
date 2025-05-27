@@ -51,6 +51,7 @@
             this.pcFarm = new System.Windows.Forms.PictureBox();
             this.btnWork = new System.Windows.Forms.Button();
             this.btnAnimal = new System.Windows.Forms.Button();
+            this.btnLand = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -220,9 +221,9 @@
             this.chkPersonnelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.chkPersonnelStatus.Location = new System.Drawing.Point(12, 146);
             this.chkPersonnelStatus.Name = "chkPersonnelStatus";
-            this.chkPersonnelStatus.Size = new System.Drawing.Size(264, 37);
+            this.chkPersonnelStatus.Size = new System.Drawing.Size(269, 37);
             this.chkPersonnelStatus.TabIndex = 49;
-            this.chkPersonnelStatus.Text = "Displaying active lands only.";
+            this.chkPersonnelStatus.Text = "Displaying active farms only.";
             this.chkPersonnelStatus.UseVisualStyleBackColor = true;
             this.chkPersonnelStatus.CheckedChanged += new System.EventHandler(this.chkPersonnelStatus_CheckedChanged);
             // 
@@ -302,11 +303,24 @@
             this.btnAnimal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnAnimal.Location = new System.Drawing.Point(7, 812);
             this.btnAnimal.Name = "btnAnimal";
-            this.btnAnimal.Size = new System.Drawing.Size(285, 70);
+            this.btnAnimal.Size = new System.Drawing.Size(341, 70);
             this.btnAnimal.TabIndex = 53;
             this.btnAnimal.Text = "Display Animals";
             this.btnAnimal.UseVisualStyleBackColor = true;
             this.btnAnimal.Click += new System.EventHandler(this.btnAnimal_Click);
+            // 
+            // btnLand
+            // 
+            this.btnLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLand.Font = new System.Drawing.Font("Agency FB", 18F);
+            this.btnLand.ForeColor = System.Drawing.Color.Linen;
+            this.btnLand.Location = new System.Drawing.Point(354, 812);
+            this.btnLand.Name = "btnLand";
+            this.btnLand.Size = new System.Drawing.Size(315, 70);
+            this.btnLand.TabIndex = 54;
+            this.btnLand.Text = "Display Lands";
+            this.btnLand.UseVisualStyleBackColor = true;
+            this.btnLand.Click += new System.EventHandler(this.btnLand_Click);
             // 
             // Farms
             // 
@@ -314,6 +328,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(983, 894);
+            this.Controls.Add(this.btnLand);
             this.Controls.Add(this.btnAnimal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnWork);
@@ -329,7 +344,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F);
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Farms";
-            this.Text = "Farms";
+            this.Text = "Farms - FMS";
             this.Load += new System.EventHandler(this.Farms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -365,5 +380,6 @@
         private System.Windows.Forms.PictureBox pcFarm;
         private System.Windows.Forms.Button btnWork;
         private System.Windows.Forms.Button btnAnimal;
+        private System.Windows.Forms.Button btnLand;
     }
 }

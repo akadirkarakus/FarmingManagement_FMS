@@ -34,6 +34,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLand = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPlantDate = new System.Windows.Forms.TextBox();
@@ -70,9 +71,9 @@
             this.chkPersonnelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.chkPersonnelStatus.Location = new System.Drawing.Point(28, 131);
             this.chkPersonnelStatus.Name = "chkPersonnelStatus";
-            this.chkPersonnelStatus.Size = new System.Drawing.Size(264, 37);
+            this.chkPersonnelStatus.Size = new System.Drawing.Size(262, 37);
             this.chkPersonnelStatus.TabIndex = 40;
-            this.chkPersonnelStatus.Text = "Displaying active lands only.";
+            this.chkPersonnelStatus.Text = "Displaying active fields only.";
             this.chkPersonnelStatus.UseVisualStyleBackColor = true;
             this.chkPersonnelStatus.CheckedChanged += new System.EventHandler(this.chkPersonnelStatus_CheckedChanged_1);
             // 
@@ -116,6 +117,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnLand);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtPlantDate);
@@ -139,6 +141,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 335);
             this.panel1.TabIndex = 37;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnLand
+            // 
+            this.btnLand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLand.Font = new System.Drawing.Font("Agency FB", 15F);
+            this.btnLand.ForeColor = System.Drawing.Color.Linen;
+            this.btnLand.Location = new System.Drawing.Point(15, 234);
+            this.btnLand.Name = "btnLand";
+            this.btnLand.Size = new System.Drawing.Size(139, 94);
+            this.btnLand.TabIndex = 55;
+            this.btnLand.Text = "Display Lands";
+            this.btnLand.UseVisualStyleBackColor = true;
+            this.btnLand.Click += new System.EventHandler(this.btnLand_Click);
             // 
             // textBox1
             // 
@@ -169,7 +185,7 @@
             this.btnSeed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeed.Font = new System.Drawing.Font("Agency FB", 15F);
             this.btnSeed.ForeColor = System.Drawing.Color.SteelBlue;
-            this.btnSeed.Location = new System.Drawing.Point(15, 183);
+            this.btnSeed.Location = new System.Drawing.Point(15, 134);
             this.btnSeed.Name = "btnSeed";
             this.btnSeed.Size = new System.Drawing.Size(139, 93);
             this.btnSeed.TabIndex = 44;
@@ -211,7 +227,7 @@
             this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClean.Font = new System.Drawing.Font("Agency FB", 14F);
             this.btnClean.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnClean.Location = new System.Drawing.Point(15, 84);
+            this.btnClean.Location = new System.Drawing.Point(15, 36);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(139, 91);
             this.btnClean.TabIndex = 30;
@@ -372,7 +388,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Fields";
-            this.Text = "Fields";
+            this.Text = "Fields - FMS";
             this.Load += new System.EventHandler(this.Fields_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -412,5 +428,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnLand;
     }
 }

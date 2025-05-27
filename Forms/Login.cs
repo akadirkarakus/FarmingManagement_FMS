@@ -17,7 +17,7 @@ namespace FarmingManagement_FMS
             InitializeComponent();
         }
 
-        public String userType = "admin";
+        public String userType;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             using (var db = new FarmingManagementSystemEntities())
@@ -30,7 +30,13 @@ namespace FarmingManagement_FMS
                 if (user != null)
                 {
                     setEmpID(ID);
-                    this.DialogResult = DialogResult.OK; // Giriş başarılı
+                    var mn = db.Management3.FirstOrDefault(f => f.Supervisor_id == ID);
+                    if (mn != null)
+                        userType = "admin";
+                    else
+                        userType = "personnel";
+
+                        this.DialogResult = DialogResult.OK; // Giriş başarılı
                     this.Close(); // Formu kapat (gizleme!)
                 }
                 else

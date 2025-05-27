@@ -17,7 +17,7 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Farm_Work()
         {
-            this.Barns = new HashSet<Barn>();
+            this.Farm_work_employee2 = new HashSet<Farm_work_employee2>();
         }
     
         public int Work_id { get; set; }
@@ -27,6 +27,6 @@ namespace FarmingManagement_FMS
     
         public virtual Farm Farm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Barn> Barns { get; set; }
+        public virtual ICollection<Farm_work_employee2> Farm_work_employee2 { get; set; }
     }
 }

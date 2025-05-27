@@ -443,7 +443,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "ManageEmployee";
-            this.Text = "ManageEmployee";
+            this.Text = "Manage Employees - FMS";
             this.Load += new System.EventHandler(this.ManageEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

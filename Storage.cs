@@ -14,12 +14,26 @@ namespace FarmingManagement_FMS
     
     public partial class Storage
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Storage()
+        {
+            this.Equipments = new HashSet<Equipment>();
+            this.Equipments1 = new HashSet<Equipment>();
+            this.Storage_work_employee = new HashSet<Storage_work_employee>();
+        }
+    
         public int Storage_no { get; set; }
         public double Storage_acreage { get; set; }
-        public string Location_name { get; set; }
         public int Land_no { get; set; }
         public string Storage_Name { get; set; }
+        public bool Status { get; set; }
     
         public virtual Land Land { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipments1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Storage_work_employee> Storage_work_employee { get; set; }
     }
 }

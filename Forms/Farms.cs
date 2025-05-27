@@ -142,7 +142,7 @@ namespace FarmingManagement_FMS.Forms
                 }
             }
             else
-                MessageBox.Show("Work cannot be applied to deleted farms.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Animals in deleted farms cannot be displayed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         
     }
 
@@ -273,6 +273,12 @@ namespace FarmingManagement_FMS.Forms
             AnimalsForm a = new AnimalsForm(-1);
             this.Visible = false;
             a.Show();
+        }
+
+        private void btnLand_Click(object sender, EventArgs e)
+        {
+            ManageLand l = new ManageLand();
+            l.Show();
         }
     }
 }

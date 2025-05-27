@@ -142,7 +142,7 @@
             this.Location = new System.Drawing.Point(1052, 1049);
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Announcement";
-            this.Text = "Announcement";
+            this.Text = "Announcement - FMS";
             this.Load += new System.EventHandler(this.Announcement_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

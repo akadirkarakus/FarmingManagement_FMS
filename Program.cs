@@ -17,10 +17,11 @@ namespace FarmingManagement_FMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminPanel());
 
-            
-            // DENEMELERİ HIZLANDIRMAK İÇİN İPTAL EDİLDİ. TEKRAR AÇILACAK!!!!
+            //Application.Run(new Login());
+            //Application.Run(new AdminPanel());
+             //Application.Run(new PersonnelStart("10045206006"));
+
             while (true)
             {
                 using (var login = new Login())
@@ -32,7 +33,7 @@ namespace FarmingManagement_FMS
                         if (login.userType == "admin")
                             panel = new AdminPanel();
                         else
-                            panel = new PersonnelStart();
+                            panel = new PersonnelStart(FormBase.getEmpID());
 
                         using (panel)
                         {
@@ -46,7 +47,7 @@ namespace FarmingManagement_FMS
                 }
             }
 
-            
+
         }
     }
 }

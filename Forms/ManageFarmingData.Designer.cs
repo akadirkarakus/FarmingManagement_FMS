@@ -97,6 +97,7 @@
             this.pcBarn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcBarn.TabIndex = 13;
             this.pcBarn.TabStop = false;
+            this.pcBarn.Click += new System.EventHandler(this.pcBarn_Click);
             // 
             // pcStorage
             // 
@@ -109,6 +110,7 @@
             this.pcStorage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcStorage.TabIndex = 15;
             this.pcStorage.TabStop = false;
+            this.pcStorage.Click += new System.EventHandler(this.pcStorage_Click);
             // 
             // lblLand
             // 
@@ -160,6 +162,7 @@
             this.lblBarn.Size = new System.Drawing.Size(65, 33);
             this.lblBarn.TabIndex = 19;
             this.lblBarn.Text = "Barns";
+            this.lblBarn.Click += new System.EventHandler(this.lblBarn_Click);
             // 
             // lblStorage
             // 
@@ -172,6 +175,7 @@
             this.lblStorage.Size = new System.Drawing.Size(80, 33);
             this.lblStorage.TabIndex = 20;
             this.lblStorage.Text = "Storage";
+            this.lblStorage.Click += new System.EventHandler(this.lblStorage_Click);
             // 
             // label1
             // 
@@ -204,7 +208,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "ManageFarmingData";
-            this.Text = "ManageFarmingData";
+            this.Text = "Manage Farming Data - FMS";
             this.Load += new System.EventHandler(this.ManageFarmingData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFarm)).EndInit();

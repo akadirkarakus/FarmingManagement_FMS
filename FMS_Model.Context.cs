@@ -29,7 +29,6 @@ namespace FarmingManagement_FMS
         public virtual DbSet<Barn> Barns { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Equipment> Equipments { get; set; }
-        public virtual DbSet<Equipment_Storage> Equipment_Storage { get; set; }
         public virtual DbSet<Equipment_Use> Equipment_Use { get; set; }
         public virtual DbSet<Examination> Examinations { get; set; }
         public virtual DbSet<Farm> Farms { get; set; }
@@ -40,12 +39,16 @@ namespace FarmingManagement_FMS
         public virtual DbSet<Notice> Notices { get; set; }
         public virtual DbSet<Seed> Seeds { get; set; }
         public virtual DbSet<Seed_Treatment> Seed_Treatment { get; set; }
-        public virtual DbSet<Storing_products> Storing_products { get; set; }
         public virtual DbSet<Vet> Vets { get; set; }
         public virtual DbSet<Employee_Workspace> Employee_Workspace { get; set; }
         public virtual DbSet<Field_work_seeds3> Field_work_seeds3 { get; set; }
         public virtual DbSet<Field_work_employees2> Field_work_employees2 { get; set; }
         public virtual DbSet<Farm_work_employee2> Farm_work_employee2 { get; set; }
+        public virtual DbSet<Storing_products> Storing_products { get; set; }
         public virtual DbSet<Storage> Storages { get; set; }
+        public virtual DbSet<PresetQuery> PresetQueries { get; set; }
+        public virtual DbSet<Management3> Management3 { get; set; }
+        public virtual DbSet<Management> Managements { get; set; }
+        public virtual DbSet<Storage_work_employee> Storage_work_employee { get; set; }
     }
 }

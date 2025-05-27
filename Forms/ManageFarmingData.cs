@@ -27,12 +27,14 @@ namespace FarmingManagement_FMS.Forms
         {
             Fields f = new Fields();
             f.Show();
+      
         }
 
         private void lblField_Click(object sender, EventArgs e)
         {
             Fields f = new Fields();
             f.Show();
+        
         }
 
         private void lblLand_Click(object sender, EventArgs e)
@@ -45,6 +47,7 @@ namespace FarmingManagement_FMS.Forms
         {
             Farms f = new Farms();
             f.Show();
+         
         }
 
         private void ManageFarmingData_Load(object sender, EventArgs e)
@@ -56,6 +59,35 @@ namespace FarmingManagement_FMS.Forms
         {
             Farms f = new Farms();
             f.Show();
+        
+        }
+
+        private void pcBarn_Click(object sender, EventArgs e)
+        {
+            BarnForm b = new BarnForm();
+            b.Show();
+            
+        }
+
+        private void lblBarn_Click(object sender, EventArgs e)
+        {
+            BarnForm b = new BarnForm();
+            b.Show();
+           
+        }
+
+        private void pcStorage_Click(object sender, EventArgs e)
+        {
+            StorageForm f = new StorageForm();
+            f.Show();
+   
+        }
+
+        private void lblStorage_Click(object sender, EventArgs e)
+        {
+            StorageForm f = new StorageForm();
+            f.Show();
+       
         }
     }
 }

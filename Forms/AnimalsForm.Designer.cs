@@ -41,6 +41,7 @@
             this.txtFarmNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbSpecies = new System.Windows.Forms.ComboBox();
             this.btnClean2 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.cmbSpecies = new System.Windows.Forms.ComboBox();
             this.cmbFarmNo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFarm)).BeginInit();
@@ -196,6 +196,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(671, 336);
             this.panel1.TabIndex = 79;
+            // 
+            // cmbSpecies
+            // 
+            this.cmbSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSpecies.FormattingEnabled = true;
+            this.cmbSpecies.Location = new System.Drawing.Point(137, 184);
+            this.cmbSpecies.Name = "cmbSpecies";
+            this.cmbSpecies.Size = new System.Drawing.Size(228, 48);
+            this.cmbSpecies.TabIndex = 97;
             // 
             // btnClean2
             // 
@@ -409,15 +418,6 @@
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // cmbSpecies
-            // 
-            this.cmbSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSpecies.FormattingEnabled = true;
-            this.cmbSpecies.Location = new System.Drawing.Point(137, 184);
-            this.cmbSpecies.Name = "cmbSpecies";
-            this.cmbSpecies.Size = new System.Drawing.Size(228, 48);
-            this.cmbSpecies.TabIndex = 97;
-            // 
             // cmbFarmNo
             // 
             this.cmbFarmNo.FormattingEnabled = true;
@@ -446,7 +446,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "AnimalsForm";
-            this.Text = "AnimalsForm";
+            this.Text = "Animals - FMS";
             this.Load += new System.EventHandler(this.AnimalsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcFarm)).EndInit();

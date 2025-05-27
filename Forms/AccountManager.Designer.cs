@@ -334,7 +334,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "AccountManager";
-            this.Text = "v";
+            this.Text = "Account Manager - FMS";
             this.Load += new System.EventHandler(this.AccountManager_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

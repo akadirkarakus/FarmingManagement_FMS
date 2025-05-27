@@ -28,7 +28,7 @@ namespace FarmingManagement_FMS
         {
             empID = empid;
         }
-        protected static String getEmpID()
+        public static String getEmpID()
         {
             return empID;
         }

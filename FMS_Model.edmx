@@ -23,6 +23,7 @@
           <Property Name="Barn_name" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Land_no" Type="int" Nullable="false" />
           <Property Name="Barn_acreage" Type="float" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -56,14 +57,8 @@
           </Key>
           <Property Name="Equi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Equi_name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Equipment_Storage">
-          <Key>
-            <PropertyRef Name="Storage_no" />
-          </Key>
-          <Property Name="Storage_no" Type="int" Nullable="false" />
-          <Property Name="Equi_id" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="storage_no" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipment_Use">
           <Key>
@@ -72,7 +67,7 @@
           </Key>
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Equi_id" Type="int" Nullable="false" />
-          <Property Name="Date_receive" Type="date" Nullable="false" />
+          <Property Name="Date_receive" Type="date" />
           <Property Name="Date_return" Type="date" />
         </EntityType>
         <EntityType Name="Examination">
@@ -105,8 +100,6 @@
           <Property Name="Farm_WorkDone" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Work_Date" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Farm_work_employee2">
           <Key>
             <PropertyRef Name="Work_id" />
@@ -115,14 +108,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <Property Name="Work_id" Type="int" Nullable="false" />
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="deneme" Type="varchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="Farm_work_location">
-          <Key>
-            <PropertyRef Name="Work_id" />
-            <PropertyRef Name="Barn_no" />
-          </Key>
-          <Property Name="Work_id" Type="int" Nullable="false" />
-          <Property Name="Barn_no" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -177,9 +162,20 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
         <EntityType Name="Management">
           <Key>
             <PropertyRef Name="Emp_id" />
+            <PropertyRef Name="Supervisor_id" />
           </Key>
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Supervisor_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="NullValue" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Management3">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+            <PropertyRef Name="Supervisor_id" />
+          </Key>
+          <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Supervisor_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="NullValue" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Notice">
           <Key>
@@ -189,6 +185,16 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <Property Name="Supervisor_id" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Workspace" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PresetQuery">
+          <Key>
+            <PropertyRef Name="query_id" />
+          </Key>
+          <Property Name="query_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="query_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="query_description" Type="varchar" MaxLength="100" />
+          <Property Name="SQL_statement" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Seed">
           <Key>
@@ -212,13 +218,22 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           </Key>
           <Property Name="Storage_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Storage_acreage" Type="float" Nullable="false" />
-          <Property Name="Location_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Land_no" Type="int" Nullable="false" />
           <Property Name="Storage_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage_work_employee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+            <PropertyRef Name="Storage_no" />
+          </Key>
+          <Property Name="emp_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Storage_no" Type="int" Nullable="false" />
+          <Property Name="nullValue" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Storing_products">
           <Key>
-            <PropertyRef Name="Barn_no" />
+            <PropertyRef Name="Storing_id" />
           </Key>
           <Property Name="Barn_no" Type="int" Nullable="false" />
           <Property Name="Emp_id" Type="varchar" MaxLength="11" Nullable="false" />
@@ -227,6 +242,7 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <Property Name="Stored_date" Type="date" Nullable="false" />
           <Property Name="Field_no" Type="int" />
           <Property Name="Farm_no" Type="int" />
+          <Property Name="Storing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Vet">
           <Key>
@@ -290,20 +306,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Equipment__Equi___17F790F9">
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Equipment_Storage" Type="Self.Equipment_Storage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipment">
-              <PropertyRef Name="Equi_id" />
-            </Principal>
-            <Dependent Role="Equipment_Storage">
-              <PropertyRef Name="Equi_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Equipment__Equi___797309D9">
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -315,6 +317,18 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Principal>
             <Dependent Role="Equipment_Use">
               <PropertyRef Name="Equi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__stora__395884C4">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="storage_no" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -356,20 +370,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Farm_work__Barn___0D7A0286">
-          <End Role="Barn" Type="Self.Barn" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Farm_work_location" Type="Self.Farm_work_location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Barn">
-              <PropertyRef Name="Barn_no" />
-            </Principal>
-            <Dependent Role="Farm_work_location">
-              <PropertyRef Name="Barn_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Farm_Work__Farm___09A971A2">
           <End Role="Farm" Type="Self.Farm" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -381,20 +381,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Principal>
             <Dependent Role="Farm_Work">
               <PropertyRef Name="Farm_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Farm_work__Work___0C85DE4D">
-          <End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Farm_work_location" Type="Self.Farm_work_location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Farm_Work">
-              <PropertyRef Name="Work_id" />
-            </Principal>
-            <Dependent Role="Farm_work_location">
-              <PropertyRef Name="Work_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -480,11 +466,9 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Managemen__Emp_i__208CD6FA">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Management" Type="Self.Management" Multiplicity="0..1" />
+        <Association Name="FK__Managemen__Emp_i__45BE5BA9">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Management" Type="Self.Management" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="Emp_id" />
@@ -494,7 +478,19 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Managemen__Super__2180FB33">
+        <Association Name="FK__Managemen__Emp_i__498EEC8D">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Management3" Type="Self.Management3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management3">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Managemen__Super__46B27FE2">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Management" Type="Self.Management" Multiplicity="*" />
           <ReferentialConstraint>
@@ -502,6 +498,18 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
               <PropertyRef Name="Emp_id" />
             </Principal>
             <Dependent Role="Management">
+              <PropertyRef Name="Supervisor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Managemen__Super__4A8310C6">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Management3" Type="Self.Management3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management3">
               <PropertyRef Name="Supervisor_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -544,11 +552,35 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Storage_w__emp_i__4D5F7D71">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Storage_work_employee" Type="Self.Storage_work_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Storage_work_employee">
+              <PropertyRef Name="emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storage_w__Stora__4E53A1AA">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="Storage_work_employee" Type="Self.Storage_work_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Storage_work_employee">
+              <PropertyRef Name="Storage_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Storing_p__Barn___00200768">
           <End Role="Barn" Type="Self.Barn" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Storing_products" Type="Self.Storing_products" Multiplicity="0..1" />
+          <End Role="Storing_products" Type="Self.Storing_products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barn">
               <PropertyRef Name="Barn_no" />
@@ -596,37 +628,68 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_empID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Farm_work_employee2" Type="Self.Farm_work_employee2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Farm_work_employee2">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="storage_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_workID">
+          <End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="1" />
+          <End Role="Farm_work_employee2" Type="Self.Farm_work_employee2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm_Work">
+              <PropertyRef Name="Work_id" />
+            </Principal>
+            <Dependent Role="Farm_work_employee2">
+              <PropertyRef Name="Work_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FarmingManagementSystemModelStoreContainer">
           <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barn" EntityType="Self.Barn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee_Workspace" EntityType="Self.Employee_Workspace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Equipment_Storage" EntityType="Self.Equipment_Storage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment_Use" EntityType="Self.Equipment_Use" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Examination" EntityType="Self.Examination" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Farm" EntityType="Self.Farm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Farm_Work" EntityType="Self.Farm_Work" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Farm_work_location" EntityType="Self.Farm_work_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farm_work_employee2" EntityType="Self.Farm_work_employee2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_work_employees2" EntityType="Self.Field_work_employees2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_work_seeds3" EntityType="Self.Field_work_seeds3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Field_works" EntityType="Self.Field_works" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Management3" EntityType="Self.Management3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresetQuery" EntityType="Self.PresetQuery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seed" EntityType="Self.Seed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seed_Treatment" EntityType="Self.Seed_Treatment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage_work_employee" EntityType="Self.Storage_work_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storing_products" EntityType="Self.Storing_products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vet" EntityType="Self.Vet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Farm_work_employee2" EntityType="Self.Farm_work_employee2" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Farm_work_employee2].[Work_id] AS [Work_id], 
-    [Farm_work_employee2].[Emp_id] AS [Emp_id], 
-    [Farm_work_employee2].[deneme] AS [deneme]
-    FROM [dbo].[Farm_work_employee2] AS [Farm_work_employee2]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Animal__Farm_No__3493CFA7" Association="Self.FK__Animal__Farm_No__3493CFA7">
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Animal" EntitySet="Animal" />
@@ -643,13 +706,13 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Equipment_Use" EntitySet="Equipment_Use" />
           </AssociationSet>
-          <AssociationSet Name="FK__Equipment__Equi___17F790F9" Association="Self.FK__Equipment__Equi___17F790F9">
-            <End Role="Equipment" EntitySet="Equipment" />
-            <End Role="Equipment_Storage" EntitySet="Equipment_Storage" />
-          </AssociationSet>
           <AssociationSet Name="FK__Equipment__Equi___797309D9" Association="Self.FK__Equipment__Equi___797309D9">
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="Equipment_Use" EntitySet="Equipment_Use" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__stora__395884C4" Association="Self.FK__Equipment__stora__395884C4">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
           <AssociationSet Name="FK__Examinati__Anima__14270015" Association="Self.FK__Examinati__Anima__14270015">
             <End Role="Animal" EntitySet="Animal" />
@@ -663,17 +726,9 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <End Role="Land" EntitySet="Land" />
             <End Role="Farm" EntitySet="Farm" />
           </AssociationSet>
-          <AssociationSet Name="FK__Farm_work__Barn___0D7A0286" Association="Self.FK__Farm_work__Barn___0D7A0286">
-            <End Role="Barn" EntitySet="Barn" />
-            <End Role="Farm_work_location" EntitySet="Farm_work_location" />
-          </AssociationSet>
           <AssociationSet Name="FK__Farm_Work__Farm___09A971A2" Association="Self.FK__Farm_Work__Farm___09A971A2">
             <End Role="Farm" EntitySet="Farm" />
             <End Role="Farm_Work" EntitySet="Farm_Work" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Farm_work__Work___0C85DE4D" Association="Self.FK__Farm_work__Work___0C85DE4D">
-            <End Role="Farm_Work" EntitySet="Farm_Work" />
-            <End Role="Farm_work_location" EntitySet="Farm_work_location" />
           </AssociationSet>
           <AssociationSet Name="FK__Field__Land_no__3C69FB99" Association="Self.FK__Field__Land_no__3C69FB99">
             <End Role="Land" EntitySet="Land" />
@@ -699,13 +754,21 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <End Role="Field_works" EntitySet="Field_works" />
             <End Role="Field_work_employees2" EntitySet="Field_work_employees2" />
           </AssociationSet>
-          <AssociationSet Name="FK__Managemen__Emp_i__208CD6FA" Association="Self.FK__Managemen__Emp_i__208CD6FA">
+          <AssociationSet Name="FK__Managemen__Emp_i__45BE5BA9" Association="Self.FK__Managemen__Emp_i__45BE5BA9">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Management" EntitySet="Management" />
           </AssociationSet>
-          <AssociationSet Name="FK__Managemen__Super__2180FB33" Association="Self.FK__Managemen__Super__2180FB33">
+          <AssociationSet Name="FK__Managemen__Emp_i__498EEC8D" Association="Self.FK__Managemen__Emp_i__498EEC8D">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Management3" EntitySet="Management3" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Super__46B27FE2" Association="Self.FK__Managemen__Super__46B27FE2">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Management" EntitySet="Management" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Super__4A8310C6" Association="Self.FK__Managemen__Super__4A8310C6">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Management3" EntitySet="Management3" />
           </AssociationSet>
           <AssociationSet Name="FK__Notice__Supervis__1AD3FDA4" Association="Self.FK__Notice__Supervis__1AD3FDA4">
             <End Role="Employee" EntitySet="Employee" />
@@ -718,6 +781,14 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <AssociationSet Name="FK__Storage_l__Land___05D8E0BE" Association="Self.FK__Storage_l__Land___05D8E0BE">
             <End Role="Land" EntitySet="Land" />
             <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage_w__emp_i__4D5F7D71" Association="Self.FK__Storage_w__emp_i__4D5F7D71">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Storage_work_employee" EntitySet="Storage_work_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage_w__Stora__4E53A1AA" Association="Self.FK__Storage_w__Stora__4E53A1AA">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Storage_work_employee" EntitySet="Storage_work_employee" />
           </AssociationSet>
           <AssociationSet Name="FK__Storing_p__Barn___00200768" Association="Self.FK__Storing_p__Barn___00200768">
             <End Role="Barn" EntitySet="Barn" />
@@ -734,6 +805,18 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <AssociationSet Name="FK__Storing_p__Field__7E37BEF6" Association="Self.FK__Storing_p__Field__7E37BEF6">
             <End Role="Field" EntitySet="Field" />
             <End Role="Storing_products" EntitySet="Storing_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_empID" Association="Self.FK_empID">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Farm_work_employee2" EntitySet="Farm_work_employee2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage" Association="Self.FK_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_workID" Association="Self.FK_workID">
+            <End Role="Farm_Work" EntitySet="Farm_Work" />
+            <End Role="Farm_work_employee2" EntitySet="Farm_work_employee2" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -761,8 +844,8 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Land_no" Type="Int32" Nullable="false" />
 					<Property Name="Barn_acreage" Type="Double" Nullable="false" />
 					<NavigationProperty Name="Land" Relationship="Self.FK__Barn__Land_no__440B1D61" FromRole="Barn" ToRole="Land" />
-					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Barn___00200768" FromRole="Barn" ToRole="Storing_products" />
-					<NavigationProperty Name="Farm_Work" Relationship="Self.Farm_work_location" FromRole="Barn" ToRole="Farm_Work" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Storing_products" Relationship="FarmingManagementSystemModel.FK__Storing_p__Barn___00200768" FromRole="Barn" ToRole="Storing_products" />
 				</EntityType>
 				<EntityType Name="Employee">
 					<Key>
@@ -780,12 +863,16 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<NavigationProperty Name="Equipment_Use" Relationship="Self.FK__Equipment__Emp_i__787EE5A0" FromRole="Employee" ToRole="Equipment_Use" />
 					<NavigationProperty Name="Notices" Relationship="Self.FK__Notice__Supervis__1AD3FDA4" FromRole="Employee" ToRole="Notice" />
-					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Emp_i__01142BA1" FromRole="Employee" ToRole="Storing_products" />
-					<NavigationProperty Name="Employee1" Relationship="Self.Management" FromRole="Employee" ToRole="Employee1" />
-					<NavigationProperty Name="Employees" Relationship="Self.Management" FromRole="Employee1" ToRole="Employee" />
 					<NavigationProperty Name="Employee_Workspace" Relationship="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC" FromRole="Employee" ToRole="Employee_Workspace" />
 					<Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Field_work_employees2" Relationship="FarmingManagementSystemModel.FK__Field_wor__Emp_i__32AB8735" FromRole="Employee" ToRole="Field_work_employees2" />
+          <NavigationProperty Name="Storing_products" Relationship="FarmingManagementSystemModel.FK__Storing_p__Emp_i__01142BA1" FromRole="Employee" ToRole="Storing_products" />
+          <NavigationProperty Name="Farm_work_employee2" Relationship="FarmingManagementSystemModel.FK_empID" FromRole="Employee" ToRole="Farm_work_employee2" />
+          <NavigationProperty Name="Management3" Relationship="FarmingManagementSystemModel.FK__Managemen__Emp_i__498EEC8D" FromRole="Employee" ToRole="Management3" />
+          <NavigationProperty Name="Management31" Relationship="FarmingManagementSystemModel.FK__Managemen__Super__4A8310C6" FromRole="Employee" ToRole="Management3" />
+          <NavigationProperty Name="Managements" Relationship="FarmingManagementSystemModel.FK__Managemen__Emp_i__45BE5BA9" FromRole="Employee" ToRole="Management" />
+          <NavigationProperty Name="Managements1" Relationship="FarmingManagementSystemModel.FK__Managemen__Super__46B27FE2" FromRole="Employee" ToRole="Management" />
+          <NavigationProperty Name="Storage_work_employee" Relationship="FarmingManagementSystemModel.FK__Storage_w__emp_i__4D5F7D71" FromRole="Employee" ToRole="Storage_work_employee" />
 				</EntityType>
 				<EntityType Name="Equipment">
 					<Key>
@@ -793,17 +880,11 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					</Key>
 					<Property Name="Equi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
 					<Property Name="Equi_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-					<NavigationProperty Name="Equipment_Storage" Relationship="Self.FK__Equipment__Equi___17F790F9" FromRole="Equipment" ToRole="Equipment_Storage" />
 					<NavigationProperty Name="Equipment_Use" Relationship="Self.FK__Equipment__Equi___797309D9" FromRole="Equipment" ToRole="Equipment_Use" />
-				</EntityType>
-				<EntityType Name="Equipment_Storage">
-					<Key>
-						<PropertyRef Name="Storage_no" />
-					</Key>
-					<Property Name="Storage_no" Type="Int32" Nullable="false" />
-					<Property Name="Equi_id" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="Equipment" Relationship="Self.FK__Equipment__Equi___17F790F9" FromRole="Equipment_Storage" ToRole="Equipment" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="storage_no" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Storage" Relationship="FarmingManagementSystemModel.FK__Equipment__stora__395884C4" FromRole="Equipment" ToRole="Storage" />
+          <NavigationProperty Name="Storage1" Relationship="FarmingManagementSystemModel.FK_Storage" FromRole="Equipment" ToRole="Storage" />
 				</EntityType>
 				<EntityType Name="Equipment_Use">
 					<Key>
@@ -812,7 +893,7 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					</Key>
 					<Property Name="Emp_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
 					<Property Name="Equi_id" Type="Int32" Nullable="false" />
-					<Property Name="Date_receive" Type="DateTime" Nullable="false" Precision="0" />
+					<Property Name="Date_receive" Type="DateTime" Precision="0" />
 					<Property Name="Date_return" Type="DateTime" Precision="0" />
 					<NavigationProperty Name="Employee" Relationship="Self.FK__Equipment__Emp_i__787EE5A0" FromRole="Equipment_Use" ToRole="Employee" />
 					<NavigationProperty Name="Equipment" Relationship="Self.FK__Equipment__Equi___797309D9" FromRole="Equipment_Use" ToRole="Equipment" />
@@ -840,9 +921,9 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Land_no" Type="Int32" Nullable="false" />
 					<NavigationProperty Name="Land" Relationship="Self.FK__Farm__Land_no__4BAC3F29" FromRole="Farm" ToRole="Land" />
 					<NavigationProperty Name="Farm_Work" Relationship="Self.FK__Farm_Work__Farm___09A971A2" FromRole="Farm" ToRole="Farm_Work" />
-					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Farm___7F2BE32F" FromRole="Farm" ToRole="Storing_products" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Animals" Relationship="FarmingManagementSystemModel.FK__Animal__Farm_No__3493CFA7" FromRole="Farm" ToRole="Animal" />
+          <NavigationProperty Name="Storing_products" Relationship="FarmingManagementSystemModel.FK__Storing_p__Farm___7F2BE32F" FromRole="Farm" ToRole="Storing_products" />
 				</EntityType>
 				<EntityType Name="Farm_Work">
 					<Key>
@@ -852,8 +933,8 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Farm_no" Type="Int32" Nullable="false" />
 					<Property Name="Farm_WorkDone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
 					<NavigationProperty Name="Farm" Relationship="Self.FK__Farm_Work__Farm___09A971A2" FromRole="Farm_Work" ToRole="Farm" />
-					<NavigationProperty Name="Barns" Relationship="Self.Farm_work_location" FromRole="Farm_Work" ToRole="Barn" />
           <Property Name="Work_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Farm_work_employee2" Relationship="FarmingManagementSystemModel.FK_workID" FromRole="Farm_Work" ToRole="Farm_work_employee2" />
 				</EntityType>
 				<EntityType Name="Field">
 					<Key>
@@ -865,9 +946,9 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Land_no" Type="Int32" Nullable="false" />
 					<NavigationProperty Name="Land" Relationship="Self.FK__Field__Land_no__3C69FB99" FromRole="Field" ToRole="Land" />
 					<NavigationProperty Name="Field_works" Relationship="Self.FK__Field_wor__Field__5AEE82B9" FromRole="Field" ToRole="Field_works" />
-					<NavigationProperty Name="Storing_products" Relationship="Self.FK__Storing_p__Field__7E37BEF6" FromRole="Field" ToRole="Storing_products" />
 					<Property Name="Status" Type="Boolean" Nullable="false" />
 					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Storing_products" Relationship="FarmingManagementSystemModel.FK__Storing_p__Field__7E37BEF6" FromRole="Field" ToRole="Storing_products" />
 				</EntityType>
 				<EntityType Name="Field_works">
 					<Key>
@@ -895,7 +976,7 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<NavigationProperty Name="Fields" Relationship="Self.FK__Field__Land_no__3C69FB99" FromRole="Land" ToRole="Field" />
 					<Property Name="Status" Type="Boolean" Nullable="false" />
 					<Property Name="Land_City" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Storages" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1" FromRole="Land" ToRole="Storage" />
+          <NavigationProperty Name="Storages" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE" FromRole="Land" ToRole="Storage" />
 				</EntityType>
 				<EntityType Name="Notice">
 					<Key>
@@ -925,22 +1006,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<Property Name="Pesticide" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
 					<Property Name="Control_range" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
 					<NavigationProperty Name="Seed" Relationship="Self.FK__Seed_Trea__Seed___534D60F1" FromRole="Seed_Treatment" ToRole="Seed" />
-				</EntityType>
-				<EntityType Name="Storing_products">
-					<Key>
-						<PropertyRef Name="Barn_no" />
-					</Key>
-					<Property Name="Barn_no" Type="Int32" Nullable="false" />
-					<Property Name="Emp_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Stored_product" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="Stored_quantity" Type="Int32" Nullable="false" />
-					<Property Name="Stored_date" Type="DateTime" Nullable="false" Precision="0" />
-					<Property Name="Field_no" Type="Int32" />
-					<Property Name="Farm_no" Type="Int32" />
-					<NavigationProperty Name="Barn" Relationship="Self.FK__Storing_p__Barn___00200768" FromRole="Storing_products" ToRole="Barn" />
-					<NavigationProperty Name="Employee" Relationship="Self.FK__Storing_p__Emp_i__01142BA1" FromRole="Storing_products" ToRole="Employee" />
-					<NavigationProperty Name="Farm" Relationship="Self.FK__Storing_p__Farm___7F2BE32F" FromRole="Storing_products" ToRole="Farm" />
-					<NavigationProperty Name="Field" Relationship="Self.FK__Storing_p__Field__7E37BEF6" FromRole="Storing_products" ToRole="Field" />
 				</EntityType>
 				<EntityType Name="Vet">
 					<Key>
@@ -979,20 +1044,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="FK__Storing_p__Barn___00200768">
-					<End Role="Barn" Type="Self.Barn" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Storing_products" Type="Self.Storing_products" Multiplicity="0..1" />
-					<ReferentialConstraint>
-						<Principal Role="Barn">
-							<PropertyRef Name="Barn_no" />
-						</Principal>
-						<Dependent Role="Storing_products">
-							<PropertyRef Name="Barn_no" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
 				<Association Name="FK__Equipment__Emp_i__787EE5A0">
 					<End Role="Employee" Type="Self.Employee" Multiplicity="1">
 						<OnDelete Action="Cascade" />
@@ -1016,34 +1067,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						</Principal>
 						<Dependent Role="Notice">
 							<PropertyRef Name="Supervisor_id" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Storing_p__Emp_i__01142BA1">
-					<End Role="Employee" Type="Self.Employee" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Storing_products" Type="Self.Storing_products" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Employee">
-							<PropertyRef Name="Emp_id" />
-						</Principal>
-						<Dependent Role="Storing_products">
-							<PropertyRef Name="Emp_id" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Equipment__Equi___17F790F9">
-					<End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="Equipment_Storage" Type="Self.Equipment_Storage" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Equipment">
-							<PropertyRef Name="Equi_id" />
-						</Principal>
-						<Dependent Role="Equipment_Storage">
-							<PropertyRef Name="Equi_id" />
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
@@ -1099,18 +1122,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="FK__Storing_p__Farm___7F2BE32F">
-					<End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
-					<End Role="Storing_products" Type="Self.Storing_products" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Farm">
-							<PropertyRef Name="Farm_no" />
-						</Principal>
-						<Dependent Role="Storing_products">
-							<PropertyRef Name="Farm_no" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
 				<Association Name="FK__Field__Land_no__3C69FB99">
 					<End Role="Land" Type="Self.Land" Multiplicity="1" />
 					<End Role="Field" Type="Self.Field" Multiplicity="*" />
@@ -1137,18 +1148,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="FK__Storing_p__Field__7E37BEF6">
-					<End Role="Field" Type="Self.Field" Multiplicity="0..1" />
-					<End Role="Storing_products" Type="Self.Storing_products" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Field">
-							<PropertyRef Name="Field_no" />
-						</Principal>
-						<Dependent Role="Storing_products">
-							<PropertyRef Name="Field_no" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
 				<Association Name="FK__Seed_Trea__Seed___534D60F1">
 					<End Role="Seed" Type="Self.Seed" Multiplicity="1" />
 					<End Role="Seed_Treatment" Type="Self.Seed_Treatment" Multiplicity="0..1" />
@@ -1161,20 +1160,11 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						</Dependent>
 					</ReferentialConstraint>
 				</Association>
-				<Association Name="Farm_work_location">
-					<End Role="Barn" Type="Self.Barn" Multiplicity="*" />
-					<End Role="Farm_Work" Type="Self.Farm_Work" Multiplicity="*" />
-				</Association>
-				<Association Name="Management">
-					<End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-					<End Role="Employee1" Type="Self.Employee" Multiplicity="0..1" />
-				</Association>
 				<EntityContainer Name="FarmingManagementSystemEntities" annotation:LazyLoadingEnabled="true">
 					<EntitySet Name="Animals" EntityType="Self.Animal" />
 					<EntitySet Name="Barns" EntityType="Self.Barn" />
 					<EntitySet Name="Employees" EntityType="Self.Employee" />
 					<EntitySet Name="Equipments" EntityType="Self.Equipment" />
-					<EntitySet Name="Equipment_Storage" EntityType="Self.Equipment_Storage" />
 					<EntitySet Name="Equipment_Use" EntityType="Self.Equipment_Use" />
 					<EntitySet Name="Examinations" EntityType="Self.Examination" />
 					<EntitySet Name="Farms" EntityType="Self.Farm" />
@@ -1185,7 +1175,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<EntitySet Name="Notices" EntityType="Self.Notice" />
 					<EntitySet Name="Seeds" EntityType="Self.Seed" />
 					<EntitySet Name="Seed_Treatment" EntityType="Self.Seed_Treatment" />
-					<EntitySet Name="Storing_products" EntityType="Self.Storing_products" />
 					<EntitySet Name="Vets" EntityType="Self.Vet" />
 					<AssociationSet Name="FK__Examinati__Anima__14270015" Association="Self.FK__Examinati__Anima__14270015">
 						<End Role="Animal" EntitySet="Animals" />
@@ -1195,10 +1184,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						<End Role="Land" EntitySet="Lands" />
 						<End Role="Barn" EntitySet="Barns" />
 					</AssociationSet>
-					<AssociationSet Name="FK__Storing_p__Barn___00200768" Association="Self.FK__Storing_p__Barn___00200768">
-						<End Role="Barn" EntitySet="Barns" />
-						<End Role="Storing_products" EntitySet="Storing_products" />
-					</AssociationSet>
 					<AssociationSet Name="FK__Equipment__Emp_i__787EE5A0" Association="Self.FK__Equipment__Emp_i__787EE5A0">
 						<End Role="Employee" EntitySet="Employees" />
 						<End Role="Equipment_Use" EntitySet="Equipment_Use" />
@@ -1206,14 +1191,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<AssociationSet Name="FK__Notice__Supervis__1AD3FDA4" Association="Self.FK__Notice__Supervis__1AD3FDA4">
 						<End Role="Employee" EntitySet="Employees" />
 						<End Role="Notice" EntitySet="Notices" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Storing_p__Emp_i__01142BA1" Association="Self.FK__Storing_p__Emp_i__01142BA1">
-						<End Role="Employee" EntitySet="Employees" />
-						<End Role="Storing_products" EntitySet="Storing_products" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Equipment__Equi___17F790F9" Association="Self.FK__Equipment__Equi___17F790F9">
-						<End Role="Equipment" EntitySet="Equipments" />
-						<End Role="Equipment_Storage" EntitySet="Equipment_Storage" />
 					</AssociationSet>
 					<AssociationSet Name="FK__Equipment__Equi___797309D9" Association="Self.FK__Equipment__Equi___797309D9">
 						<End Role="Equipment" EntitySet="Equipments" />
@@ -1231,10 +1208,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						<End Role="Farm" EntitySet="Farms" />
 						<End Role="Farm_Work" EntitySet="Farm_Work" />
 					</AssociationSet>
-					<AssociationSet Name="FK__Storing_p__Farm___7F2BE32F" Association="Self.FK__Storing_p__Farm___7F2BE32F">
-						<End Role="Farm" EntitySet="Farms" />
-						<End Role="Storing_products" EntitySet="Storing_products" />
-					</AssociationSet>
 					<AssociationSet Name="FK__Field__Land_no__3C69FB99" Association="Self.FK__Field__Land_no__3C69FB99">
 						<End Role="Land" EntitySet="Lands" />
 						<End Role="Field" EntitySet="Fields" />
@@ -1243,21 +1216,9 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 						<End Role="Field" EntitySet="Fields" />
 						<End Role="Field_works" EntitySet="Field_works" />
 					</AssociationSet>
-					<AssociationSet Name="FK__Storing_p__Field__7E37BEF6" Association="Self.FK__Storing_p__Field__7E37BEF6">
-						<End Role="Field" EntitySet="Fields" />
-						<End Role="Storing_products" EntitySet="Storing_products" />
-					</AssociationSet>
 					<AssociationSet Name="FK__Seed_Trea__Seed___534D60F1" Association="Self.FK__Seed_Trea__Seed___534D60F1">
 						<End Role="Seed" EntitySet="Seeds" />
 						<End Role="Seed_Treatment" EntitySet="Seed_Treatment" />
-					</AssociationSet>
-					<AssociationSet Name="Farm_work_location" Association="Self.Farm_work_location">
-						<End Role="Barn" EntitySet="Barns" />
-						<End Role="Farm_Work" EntitySet="Farm_Work" />
-					</AssociationSet>
-					<AssociationSet Name="Management" Association="Self.Management">
-						<End Role="Employee" EntitySet="Employees" />
-						<End Role="Employee1" EntitySet="Employees" />
 					</AssociationSet>
 					<EntitySet Name="Employee_Workspace" EntityType="FarmingManagementSystemModel.Employee_Workspace" />
 					<AssociationSet Name="FK__Employee___Emp_i__74AE54BC" Association="FarmingManagementSystemModel.FK__Employee___Emp_i__74AE54BC">
@@ -1287,10 +1248,71 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             <End Role="Farm" EntitySet="Farms" />
             <End Role="Animal" EntitySet="Animals" />
           </AssociationSet>
+          <EntitySet Name="Storing_products" EntityType="FarmingManagementSystemModel.Storing_products" />
+          <AssociationSet Name="FK__Storing_p__Barn___00200768" Association="FarmingManagementSystemModel.FK__Storing_p__Barn___00200768">
+            <End Role="Barn" EntitySet="Barns" />
+            <End Role="Storing_products" EntitySet="Storing_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storing_p__Emp_i__01142BA1" Association="FarmingManagementSystemModel.FK__Storing_p__Emp_i__01142BA1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Storing_products" EntitySet="Storing_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storing_p__Farm___7F2BE32F" Association="FarmingManagementSystemModel.FK__Storing_p__Farm___7F2BE32F">
+            <End Role="Farm" EntitySet="Farms" />
+            <End Role="Storing_products" EntitySet="Storing_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storing_p__Field__7E37BEF6" Association="FarmingManagementSystemModel.FK__Storing_p__Field__7E37BEF6">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="Storing_products" EntitySet="Storing_products" />
+          </AssociationSet>
           <EntitySet Name="Storages" EntityType="FarmingManagementSystemModel.Storage" />
-          <AssociationSet Name="FK__Storage_l__Land___05D8E0BE1" Association="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1">
+          <AssociationSet Name="FK__Storage_l__Land___05D8E0BE" Association="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE">
             <End Role="Land" EntitySet="Lands" />
             <End Role="Storage" EntitySet="Storages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__stora__395884C4" Association="FarmingManagementSystemModel.FK__Equipment__stora__395884C4">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage" Association="FarmingManagementSystemModel.FK_Storage">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <EntitySet Name="PresetQueries" EntityType="FarmingManagementSystemModel.PresetQuery" />
+          <AssociationSet Name="FK_empID" Association="FarmingManagementSystemModel.FK_empID">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Farm_work_employee2" EntitySet="Farm_work_employee2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_workID" Association="FarmingManagementSystemModel.FK_workID">
+            <End Role="Farm_Work" EntitySet="Farm_Work" />
+            <End Role="Farm_work_employee2" EntitySet="Farm_work_employee2" />
+          </AssociationSet>
+          <EntitySet Name="Management3" EntityType="FarmingManagementSystemModel.Management3" />
+          <AssociationSet Name="FK__Managemen__Emp_i__498EEC8D" Association="FarmingManagementSystemModel.FK__Managemen__Emp_i__498EEC8D">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Management3" EntitySet="Management3" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Super__4A8310C6" Association="FarmingManagementSystemModel.FK__Managemen__Super__4A8310C6">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Management3" EntitySet="Management3" />
+          </AssociationSet>
+          <EntitySet Name="Managements" EntityType="FarmingManagementSystemModel.Management" />
+          <EntitySet Name="Storage_work_employee" EntityType="FarmingManagementSystemModel.Storage_work_employee" />
+          <AssociationSet Name="FK__Managemen__Emp_i__45BE5BA9" Association="FarmingManagementSystemModel.FK__Managemen__Emp_i__45BE5BA9">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Management" EntitySet="Managements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Super__46B27FE2" Association="FarmingManagementSystemModel.FK__Managemen__Super__46B27FE2">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Management" EntitySet="Managements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage_w__emp_i__4D5F7D71" Association="FarmingManagementSystemModel.FK__Storage_w__emp_i__4D5F7D71">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Storage_work_employee" EntitySet="Storage_work_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage_w__Stora__4E53A1AA" Association="FarmingManagementSystemModel.FK__Storage_w__Stora__4E53A1AA">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="Storage_work_employee" EntitySet="Storage_work_employee" />
           </AssociationSet>
 				</EntityContainer>
 				<EntityType Name="Employee_Workspace">
@@ -1404,6 +1426,8 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
           <Property Name="Work_id" Type="Int32" Nullable="false" />
           <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="deneme" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK_empID" FromRole="Farm_work_employee2" ToRole="Employee" />
+          <NavigationProperty Name="Farm_Work" Relationship="FarmingManagementSystemModel.FK_workID" FromRole="Farm_work_employee2" ToRole="Farm_Work" />
         </EntityType>
         <Association Name="FK__Animal__Farm_No__3493CFA7">
           <End Type="FarmingManagementSystemModel.Farm" Role="Farm" Multiplicity="1" />
@@ -1417,18 +1441,90 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Storing_products">
+          <Key>
+            <PropertyRef Name="Storing_id" />
+          </Key>
+          <Property Name="Barn_no" Type="Int32" Nullable="false" />
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Stored_product" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stored_quantity" Type="Int32" Nullable="false" />
+          <Property Name="Stored_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Field_no" Type="Int32" />
+          <Property Name="Farm_no" Type="Int32" />
+          <Property Name="Storing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Barn" Relationship="FarmingManagementSystemModel.FK__Storing_p__Barn___00200768" FromRole="Storing_products" ToRole="Barn" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK__Storing_p__Emp_i__01142BA1" FromRole="Storing_products" ToRole="Employee" />
+          <NavigationProperty Name="Farm" Relationship="FarmingManagementSystemModel.FK__Storing_p__Farm___7F2BE32F" FromRole="Storing_products" ToRole="Farm" />
+          <NavigationProperty Name="Field" Relationship="FarmingManagementSystemModel.FK__Storing_p__Field__7E37BEF6" FromRole="Storing_products" ToRole="Field" />
+        </EntityType>
+        <Association Name="FK__Storing_p__Barn___00200768">
+          <End Type="FarmingManagementSystemModel.Barn" Role="Barn" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FarmingManagementSystemModel.Storing_products" Role="Storing_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barn">
+              <PropertyRef Name="Barn_no" />
+            </Principal>
+            <Dependent Role="Storing_products">
+              <PropertyRef Name="Barn_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storing_p__Emp_i__01142BA1">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FarmingManagementSystemModel.Storing_products" Role="Storing_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Storing_products">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storing_p__Farm___7F2BE32F">
+          <End Type="FarmingManagementSystemModel.Farm" Role="Farm" Multiplicity="0..1" />
+          <End Type="FarmingManagementSystemModel.Storing_products" Role="Storing_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm">
+              <PropertyRef Name="Farm_no" />
+            </Principal>
+            <Dependent Role="Storing_products">
+              <PropertyRef Name="Farm_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storing_p__Field__7E37BEF6">
+          <End Type="FarmingManagementSystemModel.Field" Role="Field" Multiplicity="0..1" />
+          <End Type="FarmingManagementSystemModel.Storing_products" Role="Storing_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="Field_no" />
+            </Principal>
+            <Dependent Role="Storing_products">
+              <PropertyRef Name="Field_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Storage">
           <Key>
             <PropertyRef Name="Storage_no" />
           </Key>
           <Property Name="Storage_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Storage_acreage" Type="Double" Nullable="false" />
-          <Property Name="Location_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Land_no" Type="Int32" Nullable="false" />
           <Property Name="Storage_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Land" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE1" FromRole="Storage" ToRole="Land" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Land" Relationship="FarmingManagementSystemModel.FK__Storage_l__Land___05D8E0BE" FromRole="Storage" ToRole="Land" />
+          <NavigationProperty Name="Equipments" Relationship="FarmingManagementSystemModel.FK__Equipment__stora__395884C4" FromRole="Storage" ToRole="Equipment" />
+          <NavigationProperty Name="Equipments1" Relationship="FarmingManagementSystemModel.FK_Storage" FromRole="Storage" ToRole="Equipment" />
+          <NavigationProperty Name="Storage_work_employee" Relationship="FarmingManagementSystemModel.FK__Storage_w__Stora__4E53A1AA" FromRole="Storage" ToRole="Storage_work_employee" />
         </EntityType>
-        <Association Name="FK__Storage_l__Land___05D8E0BE1">
+        <Association Name="FK__Storage_l__Land___05D8E0BE">
           <End Type="FarmingManagementSystemModel.Land" Role="Land" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1439,6 +1535,169 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
             </Principal>
             <Dependent Role="Storage">
               <PropertyRef Name="Land_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__stora__395884C4">
+          <End Type="FarmingManagementSystemModel.Storage" Role="Storage" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="storage_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage">
+          <End Type="FarmingManagementSystemModel.Storage" Role="Storage" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="storage_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PresetQuery">
+          <Key>
+            <PropertyRef Name="query_id" />
+          </Key>
+          <Property Name="query_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="query_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="query_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SQL_statement" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_empID">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Farm_work_employee2" Role="Farm_work_employee2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Farm_work_employee2">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_workID">
+          <End Type="FarmingManagementSystemModel.Farm_Work" Role="Farm_Work" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Farm_work_employee2" Role="Farm_work_employee2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farm_Work">
+              <PropertyRef Name="Work_id" />
+            </Principal>
+            <Dependent Role="Farm_work_employee2">
+              <PropertyRef Name="Work_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Management3">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+            <PropertyRef Name="Supervisor_id" />
+          </Key>
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Supervisor_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="NullValue" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK__Managemen__Emp_i__498EEC8D" FromRole="Management3" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="FarmingManagementSystemModel.FK__Managemen__Super__4A8310C6" FromRole="Management3" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Managemen__Emp_i__498EEC8D">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Management3" Role="Management3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management3">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Managemen__Super__4A8310C6">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Management3" Role="Management3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management3">
+              <PropertyRef Name="Supervisor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Management">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+            <PropertyRef Name="Supervisor_id" />
+          </Key>
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Supervisor_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="NullValue" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK__Managemen__Emp_i__45BE5BA9" FromRole="Management" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="FarmingManagementSystemModel.FK__Managemen__Super__46B27FE2" FromRole="Management" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Storage_work_employee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+            <PropertyRef Name="Storage_no" />
+          </Key>
+          <Property Name="emp_id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Storage_no" Type="Int32" Nullable="false" />
+          <Property Name="nullValue" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="FarmingManagementSystemModel.FK__Storage_w__emp_i__4D5F7D71" FromRole="Storage_work_employee" ToRole="Employee" />
+          <NavigationProperty Name="Storage" Relationship="FarmingManagementSystemModel.FK__Storage_w__Stora__4E53A1AA" FromRole="Storage_work_employee" ToRole="Storage" />
+        </EntityType>
+        <Association Name="FK__Managemen__Emp_i__45BE5BA9">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Management" Role="Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="Emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Managemen__Super__46B27FE2">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Management" Role="Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="Supervisor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storage_w__emp_i__4D5F7D71">
+          <End Type="FarmingManagementSystemModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Storage_work_employee" Role="Storage_work_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_id" />
+            </Principal>
+            <Dependent Role="Storage_work_employee">
+              <PropertyRef Name="emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storage_w__Stora__4E53A1AA">
+          <End Type="FarmingManagementSystemModel.Storage" Role="Storage" Multiplicity="1" />
+          <End Type="FarmingManagementSystemModel.Storage_work_employee" Role="Storage_work_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="Storage_no" />
+            </Principal>
+            <Dependent Role="Storage_work_employee">
+              <PropertyRef Name="Storage_no" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1462,7 +1721,8 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<EntitySetMapping Name="Barns">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Barn">
 							<MappingFragment StoreEntitySet="Barn">
-								<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
 								<ScalarProperty Name="Barn_name" ColumnName="Barn_name" />
 								<ScalarProperty Name="Land_no" ColumnName="Land_no" />
 								<ScalarProperty Name="Barn_acreage" ColumnName="Barn_acreage" />
@@ -1489,17 +1749,10 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 					<EntitySetMapping Name="Equipments">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Equipment">
 							<MappingFragment StoreEntitySet="Equipment">
-								<ScalarProperty Name="Equi_id" ColumnName="Equi_id" />
+								<ScalarProperty Name="storage_no" ColumnName="storage_no" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Equi_id" ColumnName="Equi_id" />
 								<ScalarProperty Name="Equi_name" ColumnName="Equi_name" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="Equipment_Storage">
-						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Equipment_Storage">
-							<MappingFragment StoreEntitySet="Equipment_Storage">
-								<ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
-								<ScalarProperty Name="Equi_id" ColumnName="Equi_id" />
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
@@ -1609,19 +1862,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
-					<EntitySetMapping Name="Storing_products">
-						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Storing_products">
-							<MappingFragment StoreEntitySet="Storing_products">
-								<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
-								<ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
-								<ScalarProperty Name="Stored_product" ColumnName="Stored_product" />
-								<ScalarProperty Name="Stored_quantity" ColumnName="Stored_quantity" />
-								<ScalarProperty Name="Stored_date" ColumnName="Stored_date" />
-								<ScalarProperty Name="Field_no" ColumnName="Field_no" />
-								<ScalarProperty Name="Farm_no" ColumnName="Farm_no" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
 					<EntitySetMapping Name="Vets">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Vet">
 							<MappingFragment StoreEntitySet="Vet">
@@ -1633,22 +1873,6 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
-					<AssociationSetMapping Name="Farm_work_location" TypeName="FarmingManagementSystemModel.Farm_work_location" StoreEntitySet="Farm_work_location">
-						<EndProperty Name="Barn">
-							<ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
-						</EndProperty>
-						<EndProperty Name="Farm_Work">
-							<ScalarProperty Name="Work_id" ColumnName="Work_id" />
-						</EndProperty>
-					</AssociationSetMapping>
-					<AssociationSetMapping Name="Management" TypeName="FarmingManagementSystemModel.Management" StoreEntitySet="Management">
-						<EndProperty Name="Employee">
-							<ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
-						</EndProperty>
-						<EndProperty Name="Employee1">
-							<ScalarProperty Name="Emp_id" ColumnName="Supervisor_id" />
-						</EndProperty>
-					</AssociationSetMapping>
 					<EntitySetMapping Name="Employee_Workspace">
 						<EntityTypeMapping TypeName="FarmingManagementSystemModel.Employee_Workspace">
 							<MappingFragment StoreEntitySet="Employee_Workspace">
@@ -1687,14 +1911,66 @@ warning 6002: The table/view 'FarmingManagementSystem.dbo.Farm_work_employee2' d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Storing_products">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Storing_products">
+              <MappingFragment StoreEntitySet="Storing_products">
+                <ScalarProperty Name="Storing_id" ColumnName="Storing_id" />
+                <ScalarProperty Name="Farm_no" ColumnName="Farm_no" />
+                <ScalarProperty Name="Field_no" ColumnName="Field_no" />
+                <ScalarProperty Name="Stored_date" ColumnName="Stored_date" />
+                <ScalarProperty Name="Stored_quantity" ColumnName="Stored_quantity" />
+                <ScalarProperty Name="Stored_product" ColumnName="Stored_product" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Barn_no" ColumnName="Barn_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Storages">
             <EntityTypeMapping TypeName="FarmingManagementSystemModel.Storage">
               <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Storage_Name" ColumnName="Storage_Name" />
                 <ScalarProperty Name="Land_no" ColumnName="Land_no" />
-                <ScalarProperty Name="Location_name" ColumnName="Location_name" />
                 <ScalarProperty Name="Storage_acreage" ColumnName="Storage_acreage" />
                 <ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresetQueries">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.PresetQuery">
+              <MappingFragment StoreEntitySet="PresetQuery">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SQL_statement" ColumnName="SQL_statement" />
+                <ScalarProperty Name="query_description" ColumnName="query_description" />
+                <ScalarProperty Name="query_name" ColumnName="query_name" />
+                <ScalarProperty Name="query_id" ColumnName="query_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Management3">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Management3">
+              <MappingFragment StoreEntitySet="Management3">
+                <ScalarProperty Name="NullValue" ColumnName="NullValue" />
+                <ScalarProperty Name="Supervisor_id" ColumnName="Supervisor_id" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managements">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Management">
+              <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="NullValue" ColumnName="NullValue" />
+                <ScalarProperty Name="Supervisor_id" ColumnName="Supervisor_id" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage_work_employee">
+            <EntityTypeMapping TypeName="FarmingManagementSystemModel.Storage_work_employee">
+              <MappingFragment StoreEntitySet="Storage_work_employee">
+                <ScalarProperty Name="nullValue" ColumnName="nullValue" />
+                <ScalarProperty Name="Storage_no" ColumnName="Storage_no" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

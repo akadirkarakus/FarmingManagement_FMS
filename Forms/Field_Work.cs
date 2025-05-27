@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,15 +16,72 @@ namespace FarmingManagement_FMS.Forms
 {
     public partial class Field_Work : FormBase
     {
-        public Field_Work()
+        private int fNum;
+        public Field_Work(int fNum)
         {
             InitializeComponent();
+            this.fNum = fNum;
+            
+            
         }
 
-        public  Boolean allValue;
+        String empID_Personnel = null;
+        public Field_Work(int fNum,String empID)
+        {
+            InitializeComponent();
+            this.fNum = fNum;
+
+            this.empID_Personnel = empID;
+            txtEmpID.Enabled = false;
+            txtEmpID.Text = empID;
+
+            button2.Visible = false;//Manage Employees
+
+        }
+
         private void Field_Work_Load(object sender, EventArgs e)
         {
-            Reload();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
+
+            using (var db = new FarmingManagementSystemEntities())
+            {
+                if (empID_Personnel != null)
+                {
+                    var fieldnNumbers = (from fe in db.Field_work_employees2
+                                         join fw in db.Field_works on fe.Work_id equals fw.Work_id
+                                         where fe.Emp_id == empID_Personnel
+                                         select fw.Field_no.ToString()).ToList();
+                    //fieldnNumbers.Insert(0, "All Fields");
+                    cmbFarms.DataSource = fieldnNumbers;
+                    if (fNum == -1)
+                    {
+                        cmbFarms.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbFarms.Text = fNum.ToString();
+                    }
+                    PersonnelReload();
+                }
+                else
+                {
+                    var fieldnNumbers = db.Fields.Select(s => s.Field_no.ToString()).ToList();
+                    fieldnNumbers.Insert(0, "All Fields");
+                    cmbFarms.DataSource = fieldnNumbers;
+                    if (fNum == -1)
+                    {
+                        cmbFarms.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbFarms.Text = fNum.ToString();
+                    }
+                    Reload();
+                }
+                
+            }
             List<string> fieldOperations = new List<string>
             {"Plowing", "Sowing","Fertilizing", "Irrigation","Hoeing","Spraying","Harvesting","Weed Control","Soil Testing","Seed Selection"};
 
@@ -33,14 +91,14 @@ namespace FarmingManagement_FMS.Forms
         {
             using (var db = new FarmingManagementSystemEntities())
             {
-                if (allValue == false)
+                String fieldNum = cmbFarms.Text;
+                if (fieldNum == "All Fields")
                 {
                     int fno = Fields.fieldNo;
                     var data = (from fi in db.Fields
                                 join fw in db.Field_works on fi.Field_no equals fw.Field_no
                                 join emp in db.Field_work_employees2 on fw.Work_id equals emp.Work_id
                                 join se in db.Field_work_seeds3 on fw.Work_id equals se.Work_id
-                                where fi.Field_no == fno
                                 where fi.Status == true
                                 select new
                                 {
@@ -54,16 +112,16 @@ namespace FarmingManagement_FMS.Forms
                                     emp.Emp_id
                                 }).ToList();
                     dataGridView1.DataSource = data;
-                    lblFieldName.Text = "Field: " + fno.ToString();
                 }
                 else
                 {
-                    int fno = Fields.fieldNo;
+                    int fno = Int32.Parse(fieldNum);
                     var data = (from fi in db.Fields
                                 join fw in db.Field_works on fi.Field_no equals fw.Field_no
                                 join emp in db.Field_work_employees2 on fw.Work_id equals emp.Work_id
                                 join se in db.Field_work_seeds3 on fw.Work_id equals se.Work_id
                                 where fi.Status == true
+                                where fi.Field_no == fno
                                 select new
                                 {
                                     fi.Field_no,
@@ -80,14 +138,64 @@ namespace FarmingManagement_FMS.Forms
                 }
                 var seedList = db.Seeds.Select(s => s.Seed_genus).ToList();
                 cmbSeed.DataSource = seedList;
-
             }
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
-
-
         }
+        private void PersonnelReload()
+        {
+            lblFieldName.Visible = true;
+            lblFieldName.Text = "Field:";
+            using (var db = new FarmingManagementSystemEntities())
+            {
+                String fieldNum = cmbFarms.Text;
+                if (fieldNum == "All Fields")
+                {
+                    int fno = Fields.fieldNo;
+                    var data = (from fi in db.Fields
+                                join fw in db.Field_works on fi.Field_no equals fw.Field_no
+                                join emp in db.Field_work_employees2 on fw.Work_id equals emp.Work_id
+                                join se in db.Field_work_seeds3 on fw.Work_id equals se.Work_id
+                                where emp.Emp_id == empID_Personnel
+                                where fi.Status == true
+                                select new
+                                {
+                                    fi.Field_no,
+                                    fi.Name,
+                                    fi.Planting_date,
+                                    fw.Work_id,
+                                    fw.Field_WorkDone,
+                                    fw.Work_Date,
+                                    se.Seed_genus,
+                                    emp.Emp_id
+                                }).ToList();
+                    dataGridView1.DataSource = data;
+                }
+                else
+                {
+                    int fno = Int32.Parse(fieldNum);
+                    var data = (from fi in db.Fields
+                                join fw in db.Field_works on fi.Field_no equals fw.Field_no
+                                join emp in db.Field_work_employees2 on fw.Work_id equals emp.Work_id
+                                join se in db.Field_work_seeds3 on fw.Work_id equals se.Work_id
+                                where fi.Status == true
+                                where fi.Field_no == fno
+                                select new
+                                {
+                                    fi.Field_no,
+                                    fi.Name,
+                                    fi.Planting_date,
+                                    fw.Work_id,
+                                    fw.Field_WorkDone,
+                                    fw.Work_Date,
+                                    se.Seed_genus,
+                                    emp.Emp_id
+                                }).ToList();
+                    dataGridView1.DataSource = data;
+                }
+                var seedList = db.Seeds.Select(s => s.Seed_genus).ToList();
+                cmbSeed.DataSource = seedList;
+            }
+        }
+        
 
         private void btnDisplaySeed_Click(object sender, EventArgs e)
         {
@@ -197,6 +305,28 @@ namespace FarmingManagement_FMS.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             Reload();
+        }
+
+        
+
+        private void cmbFarms_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (empID_Personnel != null)
+            {
+                PersonnelReload();
+            }
+            else
+            {
+                Reload();
+            }
+            txtFieldNo.Text = cmbFarms.Text;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ManageEmployee em = new ManageEmployee();
+            em.Show();
         }
     }
 }

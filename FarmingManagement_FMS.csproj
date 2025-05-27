@@ -77,9 +77,6 @@
     <Compile Include="Equipment.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Equipment_Storage.cs">
-      <DependentUpon>FMS_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Equipment_Use.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
@@ -218,6 +215,12 @@
     <Compile Include="Forms\PersonnelStart.Designer.cs">
       <DependentUpon>PersonnelStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PresetQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PresetQueryForm.Designer.cs">
+      <DependentUpon>PresetQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,7 +254,16 @@
     <Compile Include="Land.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Management.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Management3.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Notice.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PresetQuery.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -263,6 +275,9 @@
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Storage.cs">
+      <DependentUpon>FMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Storage_work_employee.cs">
       <DependentUpon>FMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Storing_products.cs">
@@ -304,6 +319,9 @@
     <EmbeddedResource Include="Forms\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.aa.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PersonnelStart.resx">
       <DependentUpon>PersonnelStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PresetQueryForm.resx">
+      <DependentUpon>PresetQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>

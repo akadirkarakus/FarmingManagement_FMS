@@ -250,6 +250,7 @@
             // 
             // cmbFarms
             // 
+            this.cmbFarms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFarms.FormattingEnabled = true;
             this.cmbFarms.Location = new System.Drawing.Point(118, 130);
             this.cmbFarms.Name = "cmbFarms";
@@ -277,7 +278,7 @@
             this.Font = new System.Drawing.Font("Agency FB", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "Farm_Works";
-            this.Text = "Farm_Work";
+            this.Text = "Farm Works - FMS";
             this.Load += new System.EventHandler(this.Farm_Work_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcFarm)).EndInit();
             this.panel2.ResumeLayout(false);

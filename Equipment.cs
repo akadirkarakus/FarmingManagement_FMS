@@ -17,16 +17,17 @@ namespace FarmingManagement_FMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Equipment()
         {
-            this.Equipment_Storage = new HashSet<Equipment_Storage>();
             this.Equipment_Use = new HashSet<Equipment_Use>();
         }
     
         public int Equi_id { get; set; }
         public string Equi_name { get; set; }
+        public bool Status { get; set; }
+        public int storage_no { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipment_Storage> Equipment_Storage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipment_Use> Equipment_Use { get; set; }
+        public virtual Storage Storage { get; set; }
+        public virtual Storage Storage1 { get; set; }
     }
 }

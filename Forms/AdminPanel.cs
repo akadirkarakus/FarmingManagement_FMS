@@ -51,5 +51,24 @@ namespace FarmingManagement_FMS
             RunSqlForm frm = new RunSqlForm();
             frm.Show();
         }
+
+        private void btnPresetQuery_Click(object sender, EventArgs e)
+        {
+            PresetQueryForm p = new PresetQueryForm();
+            p.Show();
+        }
+
+        private void AdminPanel_Load(object sender, EventArgs e)
+        {
+            using (var db = new FarmingManagementSystemEntities())
+            {
+
+                String id = getEmpID();
+                var admin = db.Employees.FirstOrDefault(s => s.Emp_id == id);
+                lblID.Text = admin.Emp_id;
+                lblName.Text = admin.Emp_name;
+                lblMail.Text = admin.eMail;
+            }
+        }
     }
 }

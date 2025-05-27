@@ -26,9 +26,74 @@ namespace FarmingManagement_FMS.Forms
             Reload();
         }
 
+        private String empID_perso;
+        public Farm_Works(String empID_personnel)
+        {
+            InitializeComponent();
+            this.empID_perso = empID_personnel;
+
+            txtEmpID.Text = empID_perso;
+            txtEmpID.Enabled = false;
+            
+            
+            using (var db = new FarmingManagementSystemEntities())
+            {
+                var fieldnNumbers = (from fe in db.Farm_work_employee2
+                                     join fw in db.Farm_Work on fe.Work_id equals fw.Work_id
+                                     where fe.Emp_id == empID_personnel
+                                     select fw.Farm_no.ToString()).Distinct().ToList();
+                cmbFarms.DataSource = fieldnNumbers;
+                cmbFarms.SelectedIndex = 0;
+            }
+            PersonnelReload();
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             Reload();
+        }
+        private void PersonnelReload()
+        {
+            using (var db = new FarmingManagementSystemEntities())
+            {
+                String farmNum = cmbFarms.Text;
+                int farmNo = Int32.Parse(farmNum);
+
+                var data = (from fa in db.Farms
+                            join fw in db.Farm_Work on fa.Farm_no equals fw.Farm_no
+                            join fe in db.Farm_work_employee2 on fw.Work_id equals fe.Work_id
+                            join em in db.Employees on fe.Emp_id equals em.Emp_id
+                            where fa.Status == true
+                            where fa.Farm_no == farmNo
+                            where fe.Emp_id == empID_perso
+                            select new
+                            {
+                                fa.Farm_no,
+                                fa.Farm_name,
+                                fw.Farm_WorkDone,
+                                fw.Work_id,
+                                em.Emp_name,
+                                em.Emp_id,
+                                fw.Work_Date
+
+                            }).ToList();
+                dataGridView1.DataSource = data;
+                
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 13);
+
+                List<string> farmTask = new List<string>
+                {
+                 "Feeding","Milking", "Barn Cleaning","Animal Inspection", "Vaccination", "Watering", "Birth Monitoring", "Weighing", "Veterinary Care", "Feed Preparation"
+                 };
+
+                comboBox1.DataSource = farmTask;
+                comboBox1.SelectedIndex = -1;
+
+
+            }
         }
         private void Reload()
         {
@@ -105,10 +170,9 @@ namespace FarmingManagement_FMS.Forms
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                 txtFarmNo.Text = row.Cells["Farm_no"].Value.ToString();
-                txtWorkDate.Text = Convert.ToDateTime(row.Cells["Work_Date"].Value).ToString("yyyy-MM-dd");
+                txtWorkDate.Text = Convert.ToDateTime(row.Cells["Work_Date"].Value).ToString("yyyy.MM.dd");
                 txtEmpID.Text = row.Cells["Emp_id"].Value.ToString();
                 comboBox1.Text = row.Cells["Farm_WorkDone"].Value.ToString();
-                txtWorkDate.Text = row.Cells["Work_Date"].Value.ToString();
             }
         }
 
@@ -143,8 +207,10 @@ namespace FarmingManagement_FMS.Forms
                 };
                 db.Farm_work_employee2.Add(em);
                 db.SaveChanges();
+                MessageBox.Show("New work applied successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reload();
 
-                
+
             }
         }
 
