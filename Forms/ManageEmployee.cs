@@ -49,8 +49,7 @@ namespace FarmingManagement_FMS.Forms
             using (var db = new FarmingManagementSystemEntities())
             {
                     var joinData = (from emp in db.Employees
-                                    join space in db.Employee_Workspace
-                                    on emp.Emp_id equals space.Emp_id
+                                    join space in db.Employee_Workspace on emp.Emp_id equals space.Emp_id
                                     where emp.Status == empStatus
                                     select new
                                     {
@@ -371,6 +370,11 @@ namespace FarmingManagement_FMS.Forms
                     e.RowBounds.Location.Y + 4
                 );
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

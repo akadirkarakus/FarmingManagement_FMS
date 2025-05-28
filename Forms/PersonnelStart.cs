@@ -14,8 +14,6 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FarmingManagement_FMS.Forms
 {
-
-    //BARN NO, DGW'YE ÇİFT TIKLANDIĞINDA YANLIŞ DEĞER GÖNDERİYOR.
     public partial class PersonnelStart : FormBase
     {
         private string empID;

@@ -34,6 +34,7 @@ namespace FarmingManagement_FMS.Forms
 
             txtEmpID.Text = empID_perso;
             txtEmpID.Enabled = false;
+            button2.Visible = false;
             
             
             using (var db = new FarmingManagementSystemEntities())
